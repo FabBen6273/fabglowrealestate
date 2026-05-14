@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speed Up My Offer</title>
+</head>
+<body style="font-family: Arial, sans-serif; max-width: 700px; margin: auto; padding: 20px;">
+
+    <h1>Speed Up Your Cash Offer</h1>
+    <p>Help us verify your property faster so our AI and specialist team can deliver your cash offer sooner. Upload photos, share repair details, and confirm the best time to reach you.</p>
+
+    <h2>Upload Property Photos</h2>
+    <p>Clear photos help Deal.ai confirm condition and generate a more accurate offer.</p>
+
+    <form method="POST" data-netlify="true" enctype="multipart/form-data">
+        <input type="hidden" name="form-name" value="speed-up-offer">
+
+        <label>Front of the property:</label><br>
+        <input type="file" name="front"><br><br>
+
+        <label>Back of the property:</label><br>
+        <input type="file" name="back"><br><br>
+
+        <label>Kitchen:</label><br>
+        <input type="file" name="kitchen"><br><br>
+
+        <label>Bathrooms:</label><br>
+        <input type="file" name="bathrooms"><br><br>
+
+        <label>Any damage or repairs:</label><br>
+        <input type="file" name="repairs"><br><br>
+
+        <h2>Tell Us About Repairs or Updates</h2>
+        <textarea name="repair-details" rows="5" style="width:100%;" placeholder="Describe repairs, updates, or issues…"></textarea><br><br>
+
+        <h2>Confirm Your Best Call Time</h2>
+        <select name="call-time" style="width:100%; padding: 8px;">
+            <option>Morning (9 AM – 12 PM)</option>
+            <option>Afternoon (12 PM – 4 PM)</option>
+            <option>Evening (4 PM – 7 PM)</option>
+            <option>Text-only preferred</option>
+        </select><br><br>
+
+        <h2>Anything Else We Should Know?</h2>
+        <textarea name="notes" rows="4" style="width:100%;" placeholder="Add any notes about your situation…"></textarea><br><br>
+
+        <button type="submit" style="padding: 12px 20px; background: black; color: white; border: none; cursor: pointer;">
+            Submit & Speed Up My Offer
+        </button>
+    </form>
+
+</body>
+</html>
