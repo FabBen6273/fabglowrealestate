@@ -1,1217 +1,557 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="color-scheme" content="dark" />
-    <title>AI FabGlow — Sell Your NJ Home Fast</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/lucide@1.8.0/dist/umd/lucide.min.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            black: '#0A0A0A',
-                            dark: '#111111',
-                            deeper: '#0F0F1A',
-                            card: '#1A1A2E',
-                            violet: '#7B2FFF',
-                            cyan: '#00E5FF',
-                            magenta: '#FF00C8',
-                            white: '#FFFFFF',
-                            gray: '#D1D5DB',
-                            muted: '#9CA3AF',
-                        }
-                    },
-                    fontFamily: {
-                        orbitron: ['Orbitron', 'sans-serif'],
-                        inter: ['Inter', 'sans-serif'],
-                    }
-                }
-            }
-        };
-    </script>
-    <style>
-        *, *::before, *::after { box-sizing: border-box; }
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #0A0A0A;
-            color: #D1D5DB;
-            margin: 0;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-        }
-        h1, h2, h3, h4, h5, h6 { font-family: 'Orbitron', sans-serif; }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI FabGlow – Sell Your NJ Home Fast</title>
 
-        /* Glow Utilities */
-        .glow-violet { box-shadow: 0 0 20px rgba(123, 47, 255, 0.4), 0 0 60px rgba(123, 47, 255, 0.15); }
-        .glow-cyan { box-shadow: 0 0 20px rgba(0, 229, 255, 0.35), 0 0 60px rgba(0, 229, 255, 0.12); }
-        .glow-text-violet { text-shadow: 0 0 20px rgba(123, 47, 255, 0.6); }
-        .glow-text-cyan { text-shadow: 0 0 20px rgba(0, 229, 255, 0.5); }
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
 
-        /* Gradient CTA */
-        .gradient-cta {
-            background: linear-gradient(135deg, #7B2FFF, #00E5FF);
-            transition: all 0.3s ease;
-        }
-        .gradient-cta:hover {
-            box-shadow: 0 0 30px rgba(123, 47, 255, 0.6), 0 0 60px rgba(0, 229, 255, 0.3);
-            transform: translateY(-2px);
-        }
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+'brand-dark': '#0a0a0f',
+'brand-deeper': '#0f0f17',
+'brand-card': 'rgba(255,255,255,0.04)',
+'brand-gray': '#b3b3c2',
+'brand-muted': '#7a7a8c',
+'brand-violet': '#7b2fff',
+'brand-cyan': '#00e5ff',
+'brand-magenta': '#ff00c8'
+},
+fontFamily: {
+orbitron: ['Orbitron', 'sans-serif'],
+inter: ['Inter', 'sans-serif']
+}
+}
+}
+};
+</script>
 
-        /* Glassmorphism */
-        .glass-card {
-            background: rgba(26, 26, 46, 0.6);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(123, 47, 255, 0.2);
-            transition: all 0.4s ease;
-        }
-        .glass-card:hover {
-            border-color: rgba(0, 229, 255, 0.5);
-            box-shadow: 0 0 25px rgba(123, 47, 255, 0.2), 0 0 50px rgba(0, 229, 255, 0.1);
-            transform: translateY(-4px);
-        }
-
-        /* Animated gradient border for form */
-        .animated-border {
-            position: relative;
-            border-radius: 1rem;
-        }
-        .animated-border::before {
-            content: '';
-            position: absolute;
-            inset: -2px;
-            border-radius: 1rem;
-            padding: 2px;
-            background: linear-gradient(270deg, #7B2FFF, #00E5FF, #FF00C8, #7B2FFF);
-            background-size: 600% 600%;
-            animation: gradientBorder 6s ease infinite;
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            z-index: 0;
-            pointer-events: none;
-        }
-        @keyframes gradientBorder {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* Hero particles */
-        .particle-container {
-            position: absolute;
-            inset: 0;
-            overflow: hidden;
-            z-index: 0;
-        }
-        .particle {
-            position: absolute;
-            border-radius: 50%;
-            animation: floatParticle linear infinite;
-            opacity: 0;
-        }
-        @keyframes floatParticle {
-            0% { transform: translateY(100vh) scale(0); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-10vh) scale(1); opacity: 0; }
-        }
-
-        /* Grid lines in hero */
-        .grid-bg {
-            background-image:
-                linear-gradient(rgba(123,47,255,0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(123,47,255,0.05) 1px, transparent 1px);
-            background-size: 60px 60px;
-        }
-
-        /* Scroll reveal */
-        .reveal-section {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-        .reveal-section.revealed {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Chevron bounce */
-        @keyframes bounce-down {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(12px); }
-        }
-        .bounce-chevron { animation: bounce-down 2s ease-in-out infinite; }
-
-        /* Step connector line */
-        .step-line {
-            position: absolute;
-            top: 24px;
-            left: 24px;
-            right: 24px;
-            height: 3px;
-            background: linear-gradient(90deg, #7B2FFF, #00E5FF);
-            z-index: 0;
-            border-radius: 2px;
-        }
-        @media (max-width: 767px) {
-            .step-line {
-                top: 0;
-                bottom: 0;
-                left: 24px;
-                right: auto;
-                width: 3px;
-                height: 100%;
-            }
-        }
-
-        /* Accordion */
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s ease, padding 0.4s ease;
-        }
-        .faq-answer.open {
-            max-height: 500px;
-        }
-        .faq-arrow {
-            transition: transform 0.3s ease;
-        }
-        .faq-arrow.rotated {
-            transform: rotate(180deg);
-        }
-
-        /* Form inputs */
-        .form-input {
-            background: rgba(10, 10, 10, 0.8);
-            border: 1px solid rgba(123, 47, 255, 0.3);
-            color: #FFFFFF;
-            transition: all 0.3s ease;
-        }
-        .form-input:focus {
-            outline: none;
-            border-color: #00E5FF;
-            box-shadow: 0 0 12px rgba(0, 229, 255, 0.25);
-        }
-        .form-input.error {
-            border-color: #EF4444;
-            box-shadow: 0 0 8px rgba(239, 68, 68, 0.3);
-        }
-        .form-input::placeholder { color: #6B7280; }
-
-        /* Success animation */
-        @keyframes checkmark-pop {
-            0% { transform: scale(0); opacity: 0; }
-            50% { transform: scale(1.2); }
-            100% { transform: scale(1); opacity: 1; }
-        }
-        .success-check {
-            animation: checkmark-pop 0.6s ease forwards;
-        }
-
-        /* Sticky nav */
-        .nav-scrolled {
-            background: rgba(10, 10, 10, 0.92) !important;
-            backdrop-filter: blur(20px) !important;
-            box-shadow: 0 2px 20px rgba(123, 47, 255, 0.15);
-        }
-
-        /* Star rating */
-        .star { color: #FBBF24; }
-
-        /* County tag */
-        .county-tag {
-            background: rgba(123, 47, 255, 0.15);
-            border: 1px solid rgba(123, 47, 255, 0.3);
-            transition: all 0.3s ease;
-        }
-        .county-tag:hover {
-            background: rgba(123, 47, 255, 0.3);
-            border-color: #00E5FF;
-        }
-
-        /* Custom scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #0A0A0A; }
-        ::-webkit-scrollbar-thumb { background: #7B2FFF; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #00E5FF; }
-
-        /* Trust badge shine */
-        .trust-badge {
-            background: rgba(26, 26, 46, 0.5);
-            border: 1px solid rgba(123, 47, 255, 0.2);
-            transition: all 0.3s ease;
-        }
-        .trust-badge:hover {
-            border-color: #00E5FF;
-            transform: translateY(-2px);
-        }
-    </style>
+<style>
+body { font-family: 'Inter', sans-serif; background-color: #0a0a0f; color: #fff; }
+.glass-card { background: rgba(255,255,255,.04); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,.06); }
+.gradient-cta { background: linear-gradient(90deg,#7b2fff,#00e5ff); }
+.glow-text-violet { text-shadow: 0 0 12px rgba(123,47,255,.8); }
+.glow-violet { box-shadow: 0 0 18px rgba(123,47,255,.6); }
+.reveal-section { opacity: 0; transform: translateY(40px); transition: .8s ease; }
+.reveal-section.revealed { opacity: 1; transform: translateY(0); }
+.particle { position: absolute; border-radius: 50%; animation: floatUp linear infinite; }
+@keyframes floatUp {
+0% { transform: translateY(0); opacity: 0; }
+50% { opacity: 1; }
+100% { transform: translateY(-120px); opacity: 0; }
+}
+</style>
 </head>
-<body data-id="0" class="bg-brand-black min-h-screen font-inter">
-    <app-icon data-id="1" hidden data-icon="home" data-palette="Dark"></app-icon>
 
-    <!-- ========== STICKY NAV ========== -->
-    <header data-id="2" id="navbar-a1b2" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" style="background: rgba(10,10,10,0.7); backdrop-filter: blur(10px);">
-        <div data-id="3" class="max-w-7xl mx-auto px-4 md:px-6 flex items-center justify-between h-16 md:h-18">
-            <!-- Logo -->
-            <a data-id="4" href="#" class="flex items-center gap-2 group">
-                <span data-id="5" class="w-3 h-3 rounded-full bg-brand-violet shadow-[0_0_12px_rgba(123,47,255,0.8)] group-hover:shadow-[0_0_20px_rgba(123,47,255,1)] transition-all"></span>
-                <span data-id="6" class="font-orbitron font-bold text-lg md:text-xl text-white glow-text-violet">AI FabGlow</span>
-            </a>
-            <!-- Desktop Nav -->
-            <nav data-id="7" class="hidden md:flex items-center gap-6 lg:gap-8">
-                <a data-id="8" href="#hero-s3c4" class="text-sm text-brand-gray hover:text-brand-cyan transition-colors">Home</a>
-                <a data-id="9" href="#how-it-works-k9l0" class="text-sm text-brand-gray hover:text-brand-cyan transition-colors">Services</a>
-                <a data-id="10" href="#who-we-help-e5f6" class="text-sm text-brand-gray hover:text-brand-cyan transition-colors">About</a>
-                <a data-id="11" href="#what-we-buy-m1n2" class="text-sm text-brand-gray hover:text-brand-cyan transition-colors">Real Estate</a>
-                <a data-id="12" href="#get-offer" class="text-sm text-brand-gray hover:text-brand-cyan transition-colors">Contact</a>
-            </nav>
-            <!-- Desktop CTA -->
-            <a data-id="13" href="#get-offer" id="nav-cta-d4e5" class="hidden md:inline-flex gradient-cta text-white font-semibold text-sm px-5 py-2.5 rounded-full items-center gap-2 glow-violet">
-                <i data-id="14" data-lucide="zap" class="w-4 h-4"></i>
-                Get My Cash Offer
-            </a>
-            <!-- Mobile Menu Button -->
-            <button data-id="15" id="mobile-menu-btn-f6g7" class="md:hidden p-2 text-white" aria-label="Open menu">
-                <i data-id="16" data-lucide="menu" class="w-6 h-6"></i>
-            </button>
-        </div>
-    </header>
+<body class="bg-brand-dark">
 
-    <!-- Mobile Menu Overlay -->
-    <nav data-id="17" id="mobile-menu-h8i9" class="hidden fixed inset-0 bg-brand-black/95 z-[60] flex flex-col items-center justify-center gap-6 backdrop-blur-xl">
-        <button data-id="18" id="mobile-menu-close-j0k1" class="absolute top-5 right-5 p-2 text-white" aria-label="Close menu">
-            <i data-id="19" data-lucide="x" class="w-7 h-7"></i>
-        </button>
-        <a data-id="20" href="#hero-s3c4" class="mobile-nav-link text-xl font-orbitron text-white hover:text-brand-cyan transition-colors">Home</a>
-        <a data-id="21" href="#how-it-works-k9l0" class="mobile-nav-link text-xl font-orbitron text-white hover:text-brand-cyan transition-colors">Services</a>
-        <a data-id="22" href="#who-we-help-e5f6" class="mobile-nav-link text-xl font-orbitron text-white hover:text-brand-cyan transition-colors">About</a>
-        <a data-id="23" href="#what-we-buy-m1n2" class="mobile-nav-link text-xl font-orbitron text-white hover:text-brand-cyan transition-colors">Real Estate</a>
-        <a data-id="24" href="#get-offer" class="mobile-nav-link text-xl font-orbitron text-white hover:text-brand-cyan transition-colors">Contact</a>
-        <a data-id="25" href="#get-offer" class="mobile-nav-link gradient-cta text-white font-bold text-lg px-8 py-3 rounded-full mt-4 glow-violet inline-flex items-center gap-2">
-            <i data-id="26" data-lucide="zap" class="w-5 h-5"></i>
-            Get My Cash Offer
-        </a>
-    </nav>
-
-    <main data-id="27">
-        <!-- ========== HERO SECTION ========== -->
-        <section data-id="28" id="hero-s3c4" class="relative min-h-screen flex items-center justify-center grid-bg overflow-hidden">
-            <div data-id="29" class="particle-container" id="particles-l2m3"></div>
-            <div data-id="30" class="relative z-10 max-w-4xl mx-auto text-center px-5 py-24 md:py-32">
-                <!-- Badge -->
-                <div data-id="31" id="hero-badge-n4o5" class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-violet/15 border border-brand-violet/30 text-brand-cyan text-xs md:text-sm font-semibold tracking-wider mb-6 md:mb-8">
-                    <i data-id="32" data-lucide="home" class="w-4 h-4"></i>
-                    NEW JERSEY'S #1 CASH OFFER TEAM
-                </div>
-                <!-- H1 -->
-                <h1 data-id="33" id="hero-h1-p6q7" class="font-orbitron font-extrabold text-3xl md:text-5xl lg:text-6xl text-white leading-tight mb-5 md:mb-6 glow-text-violet">
-                    Sell Your NJ Home Fast —<br data-id="34" class="hidden md:block" /> <span data-id="35" class="bg-clip-text text-transparent bg-gradient-to-r from-brand-violet to-brand-cyan">No Repairs. No Agents. No Hassle.</span>
-                </h1>
-                <!-- Sub -->
-                <p data-id="36" id="hero-sub-r8s9" class="text-lg md:text-xl text-white/90 font-medium mb-4 max-w-2xl mx-auto">
-                    Get a fair, all-cash offer within 24 hours. We buy houses in any condition, any situation — anywhere in New Jersey.
-                </p>
-                <p data-id="37" id="hero-body-t0u1" class="text-sm md:text-base text-brand-gray max-w-2xl mx-auto mb-8 leading-relaxed">
-                    Whether you're facing foreclosure, inherited a property, going through divorce, or just need to sell quickly — AI FabGlow is here to help. No commissions. No fees. No stress.
-                </p>
-                <!-- CTAs -->
-                <div data-id="38" class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
-    <a data-id="39" href="#get-offer" id="hero-cta1-v2w3" class="gradient-cta text-white font-bold text-base md:text-lg px-8 py-4 rounded-full glow-violet inline-flex items-center gap-2 min-h-[48px]">
-        <i data-id="40" data-lucide="home" class="w-5 h-5"></i>
-        Get My Free Cash Offer
-    </a>
-
-    <a data-id="41" href="#how-it-works-k9l0" id="hero-cta2-x4y5" class="border-2 border-brand-cyan text-brand-cyan font-semibold text-base md:text-lg px-8 py-4 rounded-full hover:bg-brand-cyan/10 transition-all inline-flex items-center gap-2 min-h-[48px]">
-        How It Works
-        <i data-id="42" data-lucide="chevron-down" class="w-5 h-5"></i>
-    </a>
-
-    <!-- ⭐ DEAL.AI BUTTONS ADDED BELOW ⭐ -->
-
-    <div class="flex flex-col md:flex-row items-center justify-center gap-4 mt-8">
-
-    <a href="https://buy.stripe.com/4gM5kC8rfgs3gbDadAgw001"
-       class="w-full md:w-auto bg-gradient-to-r from-brand-cyan to-brand-violet text-white font-semibold px-6 py-3 rounded-lg shadow-lg hover:opacity-90 transition flex items-center justify-center gap-2">
-       <i data-lucide="zap" class="w-5 h-5"></i>
-       Deal.ai Property Analysis ($2,500)
-    </a>
-
-    <a href="https://buy.stripe.com/9B6eVcdLz5Np8Jb85sgw000"
-       class="w-full md:w-auto border border-brand-cyan text-brand-cyan font-semibold px-6 py-3 rounded-lg hover:bg-brand-cyan hover:text-black transition flex items-center justify-center gap-2">
-       <i data-lucide="cpu" class="w-5 h-5"></i>
-       Deal.ai Automation Membership ($299.00)
-    </a>
-
+<header id="navbar-a1b2" class="fixed top-0 left-0 w-full z-50 bg-brand-dark/80 backdrop-blur border-b border-brand-violet/10">
+<div class="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-brand-violet shadow-[0_0_10px_rgba(123,47,255,0.8)]"></span>
+<span class="font-orbitron font-bold text-lg text-white">AI FabGlow</span>
 </div>
 
-<!-- Trust micro-badges -->
-<div id="hero-trust-z6a7" class="flex flex-wrap items-center justify-center gap-4 md:gap-6 text-sm text-brand-gray">
-                    <span data-id="44" class="flex items-center gap-1.5"><i data-id="45" data-lucide="check-circle" class="w-4 h-4 text-brand-cyan"></i> No Obligation</span>
-                    <span data-id="46" class="flex items-center gap-1.5"><i data-id="47" data-lucide="check-circle" class="w-4 h-4 text-brand-cyan"></i> 100% Free</span>
-                    <span data-id="48" class="flex items-center gap-1.5"><i data-id="49" data-lucide="check-circle" class="w-4 h-4 text-brand-cyan"></i> Close in 7 Days</span>
-                </div>
-            </div>
-            <!-- Scroll chevron -->
-            <div data-id="50" class="absolute bottom-8 left-1/2 -translate-x-1/2 bounce-chevron z-10">
-                <i data-id="51" data-lucide="chevrons-down" class="w-8 h-8 text-brand-violet/60"></i>
-            </div>
-        </section>
+<nav class="hidden md:flex items-center gap-8 text-sm">
+<a href="#hero-s3c4" class="text-brand-gray hover:text-brand-cyan transition">Home</a>
+<a href="#who-we-help-e5f6" class="text-brand-gray hover:text-brand-cyan transition">About</a>
+<a href="#how-it-works-k9l0" class="text-brand-gray hover:text-brand-cyan transition">How It Works</a>
+<a href="#get-offer" class="text-brand-gray hover:text-brand-cyan transition">Get Offer</a>
+</nav>
 
-        <!-- ========== TRUST STATS BAR ========== -->
-        <section data-id="52" id="stats-bar-b8c9" class="bg-brand-dark border-y border-brand-violet/15 py-10 md:py-14 reveal-section">
-            <div data-id="53" class="max-w-6xl mx-auto px-5 grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 text-center">
-                <div data-id="54" class="stat-item">
-                    <div data-id="55" class="font-orbitron font-extrabold text-3xl md:text-4xl text-brand-violet glow-text-violet" data-count="200" data-suffix="+">0</div>
-                    <p data-id="56" class="text-sm text-brand-gray mt-2">Properties Evaluated</p>
-                </div>
-                <div data-id="57" class="stat-item">
-                    <div data-id="58" class="font-orbitron font-extrabold text-3xl md:text-4xl text-brand-cyan glow-text-cyan" data-count="48" data-suffix=" hrs">0</div>
-                    <p data-id="59" class="text-sm text-brand-gray mt-2">Average Offer Time</p>
-                </div>
-                <div data-id="60" class="stat-item">
-                    <div data-id="61" class="font-orbitron font-extrabold text-3xl md:text-4xl text-brand-violet glow-text-violet" data-prefix="$" data-count="0" data-suffix="">$0</div>
-                    <p data-id="62" class="text-sm text-brand-gray mt-2">Fees or Commissions</p>
-                </div>
-                <div data-id="63" class="stat-item">
-                    <div data-id="64" class="font-orbitron font-extrabold text-3xl md:text-4xl text-brand-cyan glow-text-cyan" data-count="7" data-suffix=" Days">0</div>
-                    <p data-id="65" class="text-sm text-brand-gray mt-2">Fastest Close</p>
-                </div>
-            </div>
-        </section>
+<button id="mobile-menu-btn-f6g7" class="md:hidden text-brand-gray">
+<i data-lucide="menu" class="w-6 h-6"></i>
+</button>
+</div>
 
-        <!-- ========== WHO WE HELP ========== -->
-        <section data-id="66" id="who-we-help-e5f6" class="py-16 md:py-24 bg-brand-black reveal-section">
-            <div data-id="67" class="max-w-6xl mx-auto px-5">
-                <div data-id="68" class="text-center mb-12 md:mb-16">
-                    <h2 data-id="69" id="wwh-title-d0e1" class="font-orbitron font-bold text-2xl md:text-3xl lg:text-4xl text-white mb-4 glow-text-violet">We Understand Life Gets Complicated</h2>
-                    <p data-id="70" class="text-brand-gray max-w-xl mx-auto">Whatever your situation, AI FabGlow has a solution.</p>
-                </div>
-                <div data-id="71" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-                    <!-- Card 1 -->
-                    <div data-id="72" class="glass-card rounded-xl p-6 md:p-7">
-                        <div data-id="73" class="text-3xl mb-3"><i data-id="74" data-lucide="alert-triangle" class="w-8 h-8 text-brand-magenta"></i></div>
-                        <h3 data-id="75" class="font-orbitron font-semibold text-white text-base mb-2">Behind on Payments</h3>
-                        <p data-id="76" class="text-sm text-brand-gray leading-relaxed">Facing foreclosure? We can help you avoid it and get cash in your hands fast.</p>
-                    </div>
-                    <!-- Card 2 -->
-                    <div data-id="77" class="glass-card rounded-xl p-6 md:p-7">
-                        <div data-id="78" class="text-3xl mb-3"><i data-id="79" data-lucide="file-text" class="w-8 h-8 text-brand-violet"></i></div>
-                        <h3 data-id="80" class="font-orbitron font-semibold text-white text-base mb-2">Inherited Property</h3>
-                        <p data-id="81" class="text-sm text-brand-gray leading-relaxed">Don't let a property you didn't ask for become a burden.</p>
-                    </div>
-                    <!-- Card 3 -->
-                    <div data-id="82" class="glass-card rounded-xl p-6 md:p-7">
-                        <div data-id="83" class="text-3xl mb-3"><i data-id="84" data-lucide="heart-crack" class="w-8 h-8 text-brand-cyan"></i></div>
-                        <h3 data-id="85" class="font-orbitron font-semibold text-white text-base mb-2">Going Through Divorce</h3>
-                        <p data-id="86" class="text-sm text-brand-gray leading-relaxed">Simplify the process with a fast, fair sale.</p>
-                    </div>
-                    <!-- Card 4 -->
-                    <div data-id="87" class="glass-card rounded-xl p-6 md:p-7">
-                        <div data-id="88" class="text-3xl mb-3"><i data-id="89" data-lucide="wrench" class="w-8 h-8 text-brand-cyan"></i></div>
-                        <h3 data-id="90" class="font-orbitron font-semibold text-white text-base mb-2">Property Needs Repairs</h3>
-                        <p data-id="91" class="text-sm text-brand-gray leading-relaxed">Sell as-is. We handle everything.</p>
-                    </div>
-                    <!-- Card 5 -->
-                    <div data-id="92" class="glass-card rounded-xl p-6 md:p-7">
-                        <div data-id="93" class="text-3xl mb-3"><i data-id="94" data-lucide="plane" class="w-8 h-8 text-brand-violet"></i></div>
-                        <h3 data-id="95" class="font-orbitron font-semibold text-white text-base mb-2">Relocating Fast</h3>
-                        <p data-id="96" class="text-sm text-brand-gray leading-relaxed">Moving for work or family? We can close on your timeline.</p>
-                    </div>
-                    <!-- Card 6 -->
-                    <div data-id="97" class="glass-card rounded-xl p-6 md:p-7">
-                        <div data-id="98" class="text-3xl mb-3"><i data-id="99" data-lucide="frown" class="w-8 h-8 text-brand-magenta"></i></div>
-                        <h3 data-id="100" class="font-orbitron font-semibold text-white text-base mb-2">Tired Landlord</h3>
-                        <p data-id="101" class="text-sm text-brand-gray leading-relaxed">Done dealing with tenants? Get out fast with cash in hand.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+<div id="mobile-menu-h8i9" class="hidden flex-col bg-brand-dark/95 backdrop-blur border-t border-brand-violet/10 p-6">
+<button id="mobile-menu-close-j0k1" class="text-right mb-4 text-brand-gray">
+<i data-lucide="x" class="w-6 h-6"></i>
+</button>
+<a href="#hero-s3c4" class="mobile-nav-link block py-2 text-brand-gray hover:text-brand-cyan">Home</a>
+<a href="#who-we-help-e5f6" class="mobile-nav-link block py-2 text-brand-gray hover:text-brand-cyan">About</a>
+<a href="#how-it-works-k9l0" class="mobile-nav-link block py-2 text-brand-gray hover:text-brand-cyan">How It Works</a>
+<a href="#get-offer" class="mobile-nav-link block py-2 text-brand-gray hover:text-brand-cyan">Get Offer</a>
+</div>
+</header>
 
-        <!-- ========== HOW IT WORKS ========== -->
-        <section data-id="102" id="how-it-works-k9l0" class="py-16 md:py-24 bg-brand-deeper reveal-section">
-            <div data-id="103" class="max-w-6xl mx-auto px-5">
-                <div data-id="104" class="text-center mb-12 md:mb-16">
-                    <h2 data-id="105" id="hiw-title-f2g3" class="font-orbitron font-bold text-2xl md:text-3xl lg:text-4xl text-white mb-4 glow-text-violet">Our Simple 5-Step Process</h2>
-                    <p data-id="106" class="text-brand-gray max-w-xl mx-auto">From your first call to cash in hand — it's easier than you think.</p>
-                </div>
-                <!-- Steps -->
-                <div data-id="107" class="relative">
-                    <!-- Connector line (desktop) -->
-                    <div data-id="108" class="hidden md:block step-line" style="top:32px; left:10%; right:10%;"></div>
-                    <div data-id="109" class="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-4 relative">
-                        <!-- Step 1 -->
-                        <div data-id="110" class="relative flex flex-col items-center text-center z-10">
-                            <div data-id="111" class="w-16 h-16 rounded-full bg-gradient-to-br from-brand-violet to-brand-cyan flex items-center justify-center text-white font-orbitron font-bold text-lg mb-4 glow-violet">1</div>
-                            <div data-id="112" class="mb-2"><i data-id="113" data-lucide="phone" class="w-6 h-6 text-brand-cyan"></i></div>
-                            <h4 data-id="114" class="font-orbitron font-semibold text-white text-sm mb-2">Contact Us</h4>
-                            <p data-id="115" class="text-xs text-brand-gray leading-relaxed">Fill out our quick form or call us directly. It takes less than 2 minutes.</p>
-                        </div>
-                        <!-- Step 2 -->
-                        <div data-id="116" class="relative flex flex-col items-center text-center z-10">
-                            <div data-id="117" class="w-16 h-16 rounded-full bg-gradient-to-br from-brand-violet to-brand-cyan flex items-center justify-center text-white font-orbitron font-bold text-lg mb-4 glow-violet">2</div>
-                            <div data-id="118" class="mb-2"><i data-id="119" data-lucide="search" class="w-6 h-6 text-brand-violet"></i></div>
-                            <h4 data-id="120" class="font-orbitron font-semibold text-white text-sm mb-2">Property Evaluation</h4>
-                            <p data-id="121" class="text-xs text-brand-gray leading-relaxed">We assess your property — no inspection required, no judgment.</p>
-                        </div>
-                        <!-- Step 3 -->
-                        <div data-id="122" class="relative flex flex-col items-center text-center z-10">
-                            <div data-id="123" class="w-16 h-16 rounded-full bg-gradient-to-br from-brand-violet to-brand-cyan flex items-center justify-center text-white font-orbitron font-bold text-lg mb-4 glow-violet">3</div>
-                            <div data-id="124" class="mb-2"><i data-id="125" data-lucide="banknote" class="w-6 h-6 text-brand-cyan"></i></div>
-                            <h4 data-id="126" class="font-orbitron font-semibold text-white text-sm mb-2">Receive Your Offer</h4>
-                            <p data-id="127" class="text-xs text-brand-gray leading-relaxed">Get a no-obligation, all-cash offer within 24 hours.</p>
-                        </div>
-                        <!-- Step 4 -->
-                        <div data-id="128" class="relative flex flex-col items-center text-center z-10">
-                            <div data-id="129" class="w-16 h-16 rounded-full bg-gradient-to-br from-brand-violet to-brand-cyan flex items-center justify-center text-white font-orbitron font-bold text-lg mb-4 glow-violet">4</div>
-                            <div data-id="130" class="mb-2"><i data-id="131" data-lucide="file-signature" class="w-6 h-6 text-brand-violet"></i></div>
-                            <h4 data-id="132" class="font-orbitron font-semibold text-white text-sm mb-2">Sign the Contract</h4>
-                            <p data-id="133" class="text-xs text-brand-gray leading-relaxed">If you accept, we handle all the paperwork. You don't lift a finger.</p>
-                        </div>
-                        <!-- Step 5 -->
-                        <div data-id="134" class="relative flex flex-col items-center text-center z-10">
-                            <div data-id="135" class="w-16 h-16 rounded-full bg-gradient-to-br from-brand-violet to-brand-cyan flex items-center justify-center text-white font-orbitron font-bold text-lg mb-4 glow-violet">5</div>
-                            <div data-id="136" class="mb-2"><i data-id="137" data-lucide="landmark" class="w-6 h-6 text-brand-cyan"></i></div>
-                            <h4 data-id="138" class="font-orbitron font-semibold text-white text-sm mb-2">Get Paid at Closing</h4>
-                            <p data-id="139" class="text-xs text-brand-gray leading-relaxed">Close on your timeline — sometimes as fast as 7 days.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+<div class="h-20"></div>
 
-        <!-- ========== WHAT WE BUY ========== -->
-        <section data-id="140" id="what-we-buy-m1n2" class="py-16 md:py-24 bg-brand-black reveal-section">
-            <div data-id="141" class="max-w-6xl mx-auto px-5">
-                <div data-id="142" class="text-center mb-12 md:mb-16">
-                    <h2 data-id="143" id="wwb-title-h4i5" class="font-orbitron font-bold text-2xl md:text-3xl lg:text-4xl text-white mb-4 glow-text-violet">We Buy All Types of Properties</h2>
-                    <p data-id="144" class="text-brand-gray max-w-xl mx-auto">No matter the condition, situation, or location in New Jersey.</p>
-                </div>
-                <div data-id="145" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-                    <div data-id="146" class="glass-card rounded-lg p-4 flex items-center gap-3">
-                        <i data-id="147" data-lucide="home" class="w-5 h-5 text-brand-violet flex-shrink-0"></i>
-                        <span data-id="148" class="text-sm text-white">Single-Family Homes</span>
-                    </div>
-                    <div data-id="149" class="glass-card rounded-lg p-4 flex items-center gap-3">
-                        <i data-id="150" data-lucide="building" class="w-5 h-5 text-brand-cyan flex-shrink-0"></i>
-                        <span data-id="151" class="text-sm text-white">Multi-Family Properties</span>
-                    </div>
-                    <div data-id="152" class="glass-card rounded-lg p-4 flex items-center gap-3">
-                        <i data-id="153" data-lucide="triangle-alert" class="w-5 h-5 text-brand-magenta flex-shrink-0"></i>
-                        <span data-id="154" class="text-sm text-white">Distressed Homes</span>
-                    </div>
-                    <div data-id="155" class="glass-card rounded-lg p-4 flex items-center gap-3">
-                        <i data-id="156" data-lucide="box" class="w-5 h-5 text-brand-violet flex-shrink-0"></i>
-                        <span data-id="157" class="text-sm text-white">Vacant Properties</span>
-                    </div>
-                    <div data-id="158" class="glass-card rounded-lg p-4 flex items-center gap-3">
-                        <i data-id="159" data-lucide="key" class="w-5 h-5 text-brand-cyan flex-shrink-0"></i>
-                        <span data-id="160" class="text-sm text-white">Rental Properties</span>
-                    </div>
-                    <div data-id="161" class="glass-card rounded-lg p-4 flex items-center gap-3">
-                        <i data-id="162" data-lucide="scale" class="w-5 h-5 text-brand-violet flex-shrink-0"></i>
-                        <span data-id="163" class="text-sm text-white">Probate/Inherited</span>
-                    </div>
-                    <div data-id="164" class="glass-card rounded-lg p-4 flex items-center gap-3">
-                        <i data-id="165" data-lucide="hammer" class="w-5 h-5 text-brand-magenta flex-shrink-0"></i>
-                        <span data-id="166" class="text-sm text-white">Fixer-Uppers</span>
-                    </div>
-                    <div data-id="167" class="glass-card rounded-lg p-4 flex items-center gap-3">
-                        <i data-id="168" data-lucide="clock" class="w-5 h-5 text-brand-cyan flex-shrink-0"></i>
-                        <span data-id="169" class="text-sm text-white">Pre-Foreclosure</span>
-                    </div>
-                    <div data-id="170" class="glass-card rounded-lg p-4 flex items-center gap-3">
-                        <i data-id="171" data-lucide="construction" class="w-5 h-5 text-brand-violet flex-shrink-0"></i>
-                        <span data-id="172" class="text-sm text-white">Code Violations</span>
-                    </div>
-                    <div data-id="173" class="glass-card rounded-lg p-4 flex items-center gap-3">
-                        <i data-id="174" data-lucide="droplets" class="w-5 h-5 text-brand-cyan flex-shrink-0"></i>
-                        <span data-id="175" class="text-sm text-white">Water/Fire Damaged</span>
-                    </div>
-                    <div data-id="176" class="glass-card rounded-lg p-4 flex items-center gap-3">
-                        <i data-id="177" data-lucide="users" class="w-5 h-5 text-brand-magenta flex-shrink-0"></i>
-                        <span data-id="178" class="text-sm text-white">Senior/Estate Sales</span>
-                    </div>
-                    <div data-id="179" class="glass-card rounded-lg p-4 flex items-center gap-3">
-                        <i data-id="180" data-lucide="trees" class="w-5 h-5 text-brand-violet flex-shrink-0"></i>
-                        <span data-id="181" class="text-sm text-white">Vacant Land</span>
-                    </div>
-                </div>
-            </div>
-        </section>
+<!-- HERO -->
+<section id="hero-s3c4" class="relative py-24 md:py-40 bg-brand-deeper overflow-hidden reveal-section">
+<div id="particles-l2m3" class="absolute inset-0 pointer-events-none"></div>
 
-        <!-- ========== BENEFITS ========== -->
-        <section data-id="182" id="benefits-o3p4" class="py-16 md:py-24 bg-brand-deeper reveal-section">
-            <div data-id="183" class="max-w-6xl mx-auto px-5">
-                <div data-id="184" class="text-center mb-12 md:mb-16">
-                    <h2 data-id="185" id="ben-title-q5r6" class="font-orbitron font-bold text-2xl md:text-3xl lg:text-4xl text-white mb-4 glow-text-violet">Why NJ Homeowners Choose AI FabGlow</h2>
-                </div>
-                <div data-id="186" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
-                    <div data-id="187" class="glass-card rounded-xl p-6 md:p-7">
-                        <div data-id="188" class="flex items-center gap-3 mb-3">
-                            <div data-id="189" class="w-10 h-10 rounded-lg bg-brand-violet/20 flex items-center justify-center"><i data-id="190" data-lucide="shield-check" class="w-5 h-5 text-brand-violet"></i></div>
-                            <h3 data-id="191" class="font-orbitron font-semibold text-white text-sm">No Repairs Needed</h3>
-                        </div>
-                        <p data-id="192" class="text-sm text-brand-gray leading-relaxed">Sell your home exactly as-is. We take care of everything post-closing.</p>
-                    </div>
-                    <div data-id="193" class="glass-card rounded-xl p-6 md:p-7">
-                        <div data-id="194" class="flex items-center gap-3 mb-3">
-                            <div data-id="195" class="w-10 h-10 rounded-lg bg-brand-cyan/20 flex items-center justify-center"><i data-id="196" data-lucide="badge-dollar-sign" class="w-5 h-5 text-brand-cyan"></i></div>
-                            <h3 data-id="197" class="font-orbitron font-semibold text-white text-sm">Zero Agent Fees</h3>
-                        </div>
-                        <p data-id="198" class="text-sm text-brand-gray leading-relaxed">No Realtor commissions. No listing fees. You keep more of your money.</p>
-                    </div>
-                    <div data-id="199" class="glass-card rounded-xl p-6 md:p-7">
-                        <div data-id="200" class="flex items-center gap-3 mb-3">
-                            <div data-id="201" class="w-10 h-10 rounded-lg bg-brand-magenta/20 flex items-center justify-center"><i data-id="202" data-lucide="timer" class="w-5 h-5 text-brand-magenta"></i></div>
-                            <h3 data-id="203" class="font-orbitron font-semibold text-white text-sm">Fast Closing</h3>
-                        </div>
-                        <p data-id="204" class="text-sm text-brand-gray leading-relaxed">We can close in as little as 7 days — or whenever works best for you.</p>
-                    </div>
-                    <div data-id="205" class="glass-card rounded-xl p-6 md:p-7">
-                        <div data-id="206" class="flex items-center gap-3 mb-3">
-                            <div data-id="207" class="w-10 h-10 rounded-lg bg-brand-violet/20 flex items-center justify-center"><i data-id="208" data-lucide="wallet" class="w-5 h-5 text-brand-violet"></i></div>
-                            <h3 data-id="209" class="font-orbitron font-semibold text-white text-sm">Cash in Hand</h3>
-                        </div>
-                        <p data-id="210" class="text-sm text-brand-gray leading-relaxed">No financing contingencies. No bank delays. Just a straightforward cash deal.</p>
-                    </div>
-                    <div data-id="211" class="glass-card rounded-xl p-6 md:p-7">
-                        <div data-id="212" class="flex items-center gap-3 mb-3">
-                            <div data-id="213" class="w-10 h-10 rounded-lg bg-brand-cyan/20 flex items-center justify-center"><i data-id="214" data-lucide="eye-off" class="w-5 h-5 text-brand-cyan"></i></div>
-                            <h3 data-id="215" class="font-orbitron font-semibold text-white text-sm">No Showings Needed</h3>
-                        </div>
-                        <p data-id="216" class="text-sm text-brand-gray leading-relaxed">Skip the open houses, strangers walking through, and endless waiting.</p>
-                    </div>
-                    <div data-id="217" class="glass-card rounded-xl p-6 md:p-7">
-                        <div data-id="218" class="flex items-center gap-3 mb-3">
-                            <div data-id="219" class="w-10 h-10 rounded-lg bg-brand-magenta/20 flex items-center justify-center"><i data-id="220" data-lucide="calendar-check" class="w-5 h-5 text-brand-magenta"></i></div>
-                            <h3 data-id="221" class="font-orbitron font-semibold text-white text-sm">Total Flexibility</h3>
-                        </div>
-                        <p data-id="222" class="text-sm text-brand-gray leading-relaxed">You choose the closing date. We work around your schedule and needs.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+<div class="relative z-10 max-w-4xl mx-auto px-5 text-center">
+<h1 class="font-orbitron font-bold text-3xl md:text-5xl lg:text-6xl text-white mb-6 glow-text-violet">
+Sell Your NJ Home Fast — For a Fair Cash Offer
+</h1>
 
-        <!-- ========== TESTIMONIALS ========== -->
-        <section data-id="223" id="testimonials-s7t8" class="py-16 md:py-24 bg-brand-black reveal-section">
-            <div data-id="224" class="max-w-6xl mx-auto px-5">
-                <div data-id="225" class="text-center mb-12 md:mb-16">
-                    <h2 data-id="226" id="test-title-u9v0" class="font-orbitron font-bold text-2xl md:text-3xl lg:text-4xl text-white mb-4 glow-text-violet">What NJ Homeowners Are Saying</h2>
-                </div>
-                <div data-id="227" class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <!-- Testimonial 1 -->
-                    <div data-id="228" class="glass-card rounded-xl p-6 md:p-7 border-t-2 border-t-brand-violet">
-                        <div data-id="229" class="flex gap-1 mb-4">
-                            <i data-id="230" data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
-                            <i data-id="231" data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
-                            <i data-id="232" data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
-                            <i data-id="233" data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
-                            <i data-id="234" data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
-                        </div>
-                        <p data-id="235" class="text-sm text-brand-gray leading-relaxed mb-5 italic">"I inherited my mother's house in Trenton and had no idea what to do with it. AI FabGlow called me back within an hour, gave me a fair offer the next day, and we closed in 10 days. No pressure, no games. I couldn't believe how smooth it was."</p>
-                        <div data-id="236" class="flex items-center gap-3">
-                            <div data-id="237" class="w-10 h-10 rounded-full bg-gradient-to-br from-brand-violet to-brand-cyan flex items-center justify-center text-white font-bold text-sm">MT</div>
-                            <div data-id="238">
-                                <p data-id="239" class="text-white font-semibold text-sm">Marcus T.</p>
-                                <p data-id="240" class="text-xs text-brand-muted">Trenton, NJ</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Testimonial 2 -->
-                    <div data-id="241" class="glass-card rounded-xl p-6 md:p-7 border-t-2 border-t-brand-cyan">
-                        <div data-id="242" class="flex gap-1 mb-4">
-                            <i data-id="243" data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
-                            <i data-id="244" data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
-                            <i data-id="245" data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
-                            <i data-id="246" data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
-                            <i data-id="247" data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
-                        </div>
-                        <p data-id="248" class="text-sm text-brand-gray leading-relaxed mb-5 italic">"I was two months behind on my mortgage and panicking. A friend told me about AI FabGlow and I'm so glad I called. They walked me through everything, made a real cash offer, and helped me avoid foreclosure completely. These people genuinely care."</p>
-                        <div data-id="249" class="flex items-center gap-3">
-                            <div data-id="250" class="w-10 h-10 rounded-full bg-gradient-to-br from-brand-cyan to-brand-magenta flex items-center justify-center text-white font-bold text-sm">DR</div>
-                            <div data-id="251">
-                                <p data-id="252" class="text-white font-semibold text-sm">Diane R.</p>
-                                <p data-id="253" class="text-xs text-brand-muted">Newark, NJ</p>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Testimonial 3 -->
-                    <div data-id="254" class="glass-card rounded-xl p-6 md:p-7 border-t-2 border-t-brand-magenta">
-                        <div data-id="255" class="flex gap-1 mb-4">
-                            <i data-id="256" data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
-                            <i data-id="257" data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
-                            <i data-id="258" data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
-                            <i data-id="259" data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
-                            <i data-id="260" data-lucide="star" class="w-4 h-4 text-yellow-400 fill-yellow-400"></i>
-                        </div>
-                        <p data-id="261" class="text-sm text-brand-gray leading-relaxed mb-5 italic">"My ex and I needed to sell our house fast during our divorce. AI FabGlow handled everything professionally and got us both a fair deal fast. Closed in 8 days. Absolute lifesavers. I've already referred two friends."</p>
-                        <div data-id="262" class="flex items-center gap-3">
-                            <div data-id="263" class="w-10 h-10 rounded-full bg-gradient-to-br from-brand-magenta to-brand-violet flex items-center justify-center text-white font-bold text-sm">JK</div>
-                            <div data-id="264">
-                                <p data-id="265" class="text-white font-semibold text-sm">James & Priya K.</p>
-                                <p data-id="266" class="text-xs text-brand-muted">Edison, NJ</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+<p class="text-brand-gray text-base md:text-lg max-w-2xl mx-auto mb-8">
+No repairs. No agents. No fees. Just a fast, fair cash offer from a trusted New Jersey home‑buying team.
+</p>
 
-        <!-- ========== LEAD CAPTURE FORM ========== -->
-        <section data-id="267" id="get-offer" class="py-16 md:py-24 bg-brand-deeper reveal-section">
-            <div data-id="268" class="max-w-3xl mx-auto px-5">
-                <div data-id="269" class="text-center mb-10">
-                    <h2 data-id="270" id="form-title-w1x2" class="font-orbitron font-bold text-2xl md:text-3xl lg:text-4xl text-white mb-4 glow-text-violet">Get Your Free, No-Obligation Cash Offer</h2>
-                    <p data-id="271" class="text-brand-gray max-w-xl mx-auto">Fill out the form below and a member of our team will contact you within 24 hours.</p>
-                </div>
-                <!-- Form container with animated gradient border -->
-                <div data-id="272" class="animated-border">
-                    <div data-id="273" id="form-container-y3z4" class="bg-brand-card rounded-2xl p-6 md:p-10 relative z-10">
-                        <!-- Form -->
-                        <form data-id="274" id="lead-form-a5b6" novalidate>
-                            <div data-id="275" class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                                <!-- Full Name -->
-                                <div data-id="276" class="md:col-span-2">
-                                    <label data-id="277" class="block text-sm text-white font-medium mb-1.5">Full Name <span data-id="278" class="text-brand-magenta">*</span></label>
-                                    <input data-id="279" type="text" name="fullName" required placeholder="Your Full Name" class="form-input w-full rounded-lg px-4 py-3 text-base" />
-                                    <p data-id="280" class="text-xs text-red-400 mt-1 hidden error-msg">Please enter your full name.</p>
-                                </div>
-                                <!-- Phone -->
-                                <div data-id="281">
-                                    <label data-id="282" class="block text-sm text-white font-medium mb-1.5">Phone Number <span data-id="283" class="text-brand-magenta">*</span></label>
-                                    <input data-id="284" type="tel" name="phone" required placeholder="(555) 000-0000" class="form-input w-full rounded-lg px-4 py-3 text-base" />
-                                    <p data-id="285" class="text-xs text-red-400 mt-1 hidden error-msg">Please enter your phone number.</p>
-                                </div>
-                                <!-- Email -->
-                                <div data-id="286">
-                                    <label data-id="287" class="block text-sm text-white font-medium mb-1.5">Email Address <span data-id="288" class="text-brand-magenta">*</span></label>
-                                    <input data-id="289" type="email" name="email" required placeholder="your@email.com" class="form-input w-full rounded-lg px-4 py-3 text-base" />
-                                    <p data-id="290" class="text-xs text-red-400 mt-1 hidden error-msg">Please enter a valid email address.</p>
-                                </div>
-                                <!-- Property Address -->
-                                <div data-id="291" class="md:col-span-2">
-                                    <label data-id="292" class="block text-sm text-white font-medium mb-1.5">Property Address <span data-id="293" class="text-brand-magenta">*</span></label>
-                                    <input data-id="294" type="text" name="address" required placeholder="123 Main St, City, NJ" class="form-input w-full rounded-lg px-4 py-3 text-base" />
-                                    <p data-id="295" class="text-xs text-red-400 mt-1 hidden error-msg">Please enter the property address.</p>
-                                </div>
-                                <!-- Situation -->
-                                <div data-id="296">
-                                    <label data-id="297" class="block text-sm text-white font-medium mb-1.5">What's Your Situation? <span data-id="298" class="text-brand-magenta">*</span></label>
-                                    <select data-id="299" name="situation" required class="form-input w-full rounded-lg px-4 py-3 text-base appearance-none cursor-pointer">
-                                        <option data-id="300" value="">Select your situation...</option>
-                                        <option data-id="301" value="behind-payments">Behind on Payments</option>
-                                        <option data-id="302" value="inherited">Inherited Property</option>
-                                        <option data-id="303" value="foreclosure">Facing Foreclosure</option>
-                                        <option data-id="304" value="divorce">Going Through Divorce</option>
-                                        <option data-id="305" value="tired-landlord">Tired Landlord</option>
-                                        <option data-id="306" value="relocating">Relocating</option>
-                                        <option data-id="307" value="repairs">Property Needs Major Repairs</option>
-                                        <option data-id="308" value="other">Other</option>
-                                    </select>
-                                    <p data-id="309" class="text-xs text-red-400 mt-1 hidden error-msg">Please select your situation.</p>
-                                </div>
-                                <!-- Condition -->
-                                <div data-id="310">
-                                    <label data-id="311" class="block text-sm text-white font-medium mb-1.5">Approximate Property Condition</label>
-                                    <select data-id="312" name="condition" class="form-input w-full rounded-lg px-4 py-3 text-base appearance-none cursor-pointer">
-                                        <option data-id="313" value="">Select condition...</option>
-                                        <option data-id="314" value="good">Good Shape</option>
-                                        <option data-id="315" value="minor-repairs">Needs Minor Repairs</option>
-                                        <option data-id="316" value="major-repairs">Needs Major Repairs</option>
-                                        <option data-id="317" value="distressed">Severely Distressed</option>
-                                    </select>
-                                </div>
-                                <!-- Asking Price -->
-                                <div data-id="318">
-                                    <label data-id="319" class="block text-sm text-white font-medium mb-1.5">Asking Price (if any)?</label>
-                                    <input data-id="320" type="text" name="askingPrice" placeholder="Optional — what are you hoping to get?" class="form-input w-full rounded-lg px-4 py-3 text-base" />
-                                </div>
-                                <!-- Best Time -->
-                                <div data-id="321">
-                                    <label data-id="322" class="block text-sm text-white font-medium mb-1.5">Best Time to Call</label>
-                                    <select data-id="323" name="callTime" class="form-input w-full rounded-lg px-4 py-3 text-base appearance-none cursor-pointer">
-                                        <option data-id="324" value="morning">Morning (8am–12pm)</option>
-                                        <option data-id="325" value="afternoon">Afternoon (12pm–5pm)</option>
-                                        <option data-id="326" value="evening">Evening (5pm–8pm)</option>
-                                    </select>
-                                </div>
-                                <!-- Notes -->
-                                <div data-id="327" class="md:col-span-2">
-                                    <label data-id="328" class="block text-sm text-white font-medium mb-1.5">Additional Notes</label>
-                                    <textarea data-id="329" name="notes" rows="3" placeholder="Tell us anything else about your property or situation..." class="form-input w-full rounded-lg px-4 py-3 text-base resize-y"></textarea>
-                                </div>
-                            </div>
-                            <!-- Submit -->
-                            <button data-id="330" type="submit" id="form-submit-c7d8" class="w-full gradient-cta text-white font-bold text-lg px-8 py-4 rounded-full mt-6 glow-violet flex items-center justify-center gap-2 min-h-[52px] cursor-pointer">
-                                <i data-id="331" data-lucide="home" class="w-5 h-5"></i>
-                                Get My Free Cash Offer Now
-                            </button>
-                        </form>
-                        <!-- Trust icons below form -->
-                        <div data-id="332" class="flex flex-wrap items-center justify-center gap-4 md:gap-6 mt-6 text-xs text-brand-muted">
-                            <span data-id="333" class="flex items-center gap-1.5"><i data-id="334" data-lucide="lock" class="w-3.5 h-3.5 text-brand-cyan"></i> 100% Confidential</span>
-                            <span data-id="335" class="flex items-center gap-1.5"><i data-id="336" data-lucide="zap" class="w-3.5 h-3.5 text-brand-violet"></i> Response within 24 Hours</span>
-                            <span data-id="337" class="flex items-center gap-1.5"><i data-id="338" data-lucide="circle-off" class="w-3.5 h-3.5 text-brand-magenta"></i> No Obligation Whatsoever</span>
-                        </div>
-                        <!-- Success State (hidden by default) -->
-                        <div data-id="339" id="form-success-e9f0" class="hidden text-center py-8">
-                            <div data-id="340" class="success-check inline-flex items-center justify-center w-20 h-20 rounded-full bg-green-500/20 border-2 border-green-400 mb-5">
-                                <i data-id="341" data-lucide="check" class="w-10 h-10 text-green-400"></i>
-                            </div>
-                            <h3 data-id="342" class="font-orbitron font-bold text-xl text-white mb-3" id="success-heading-g1h2">Thank you!</h3>
-                            <p data-id="343" class="text-brand-gray text-sm leading-relaxed max-w-md mx-auto" id="success-message-i3j4">We've received your information and a member of our team will contact you within 24 hours. Check your email for confirmation.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+<a href="#get-offer" class="gradient-cta text-white font-bold px-10 py-4 rounded-full glow-violet inline-flex items-center gap-2">
+Get My Cash Offer <i data-lucide="arrow-right" class="w-5 h-5"></i>
+</a>
 
-        <!-- ========== TRUST & CREDIBILITY ========== -->
-        <section data-id="344" id="trust-section-k5l6" class="py-16 md:py-24 bg-brand-black reveal-section">
-            <div data-id="345" class="max-w-6xl mx-auto px-5">
-                <div data-id="346" class="text-center mb-10">
-                    <h2 data-id="347" id="trust-title-m7n8" class="font-orbitron font-bold text-2xl md:text-3xl lg:text-4xl text-white mb-8 glow-text-violet">Trusted by NJ Homeowners</h2>
-                    <!-- Trust badges -->
-<div data-id="348" class="flex flex-wrap justify-center gap-3 md:gap-4 mt-6">
+<a href="speed-up-my-offer.html" class="text-brand-cyan font-semibold hover:text-white transition inline-flex items-center gap-2">
+Speed Up My Offer <i data-lucide="zap" class="w-5 h-5"></i>
+</a>
+</div>
+</div>
+</section>
 
-    <div data-id="349" class="trust-badge rounded-full px-4 py-2 flex items-center gap-2 text-sm text-white">
-        <i data-id="350" data-lucide="award" class="w-4 h-4 text-brand-violet"></i> Local NJ Business
-    </div>
+<!-- DEAL.AI SECTION -->
+<section id="deal-ai-section" class="py-16 md:py-24 bg-brand-deeper reveal-section">
+<div class="max-w-6xl mx-auto px-5">
+<div class="text-center mb-12 md:mb-16">
+<h2 class="font-orbitron font-bold text-2xl md:text-3xl lg:text-4xl text-white mb-4 glow-text-violet">
+Deal.ai — All‑In‑One Marketing Platform
+</h2>
+<p class="text-brand-gray max-w-2xl mx-auto">
+Deal.ai helps entrepreneurs, small business owners, and service providers automate their marketing, grow their brand, and attract more customers — all from one simple dashboard.
+</p>
+</div>
 
-    <div data-id="351" class="trust-badge rounded-full px-4 py-2 flex items-center gap-2 text-sm text-white">
-        <i data-id="352" data-lucide="cpu" class="w-4 h-4 text-brand-cyan"></i> AI-Powered Process
-    </div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
 
-    <div data-id="353" class="trust-badge rounded-full px-4 py-2 flex items-center gap-2 text-sm text-white">
-        <i data-id="354" data-lucide="handshake" class="w-4 h-4 text-brand-magenta"></i> No-Pressure Guarantee
-    </div>
+<div class="glass-card rounded-xl p-6 md:p-7">
+<i data-lucide="cpu" class="w-8 h-8 text-brand-cyan mb-3"></i>
+<h3 class="font-orbitron font-semibold text-white text-base mb-2">AI Content Creation</h3>
+<p class="text-sm text-brand-gray leading-relaxed">Instantly generate social posts, emails, ads, scripts, and marketing copy tailored to your business.</p>
+</div>
 
-    <div data-id="357" class="trust-badge rounded-full px-4 py-2 flex items-center gap-2 text-sm text-white">
-        <i data-id="358" data-lucide="message-circle" class="w-4 h-4 text-brand-cyan"></i> 5-Star Rated
-    </div>
+<div class="glass-card rounded-xl p-6 md:p-7">
+<i data-lucide="mail" class="w-8 h-8 text-brand-violet mb-3"></i>
+<h3 class="font-orbitron font-semibold text-white text-base mb-2">Email & SMS Automation</h3>
+<p class="text-sm text-brand-gray leading-relaxed">Build automated follow‑ups, nurture sequences, and broadcast campaigns with ease.</p>
+</div>
+
+<div class="glass-card rounded-xl p-6 md:p-7">
+<i data-lucide="layout-dashboard" class="w-8 h-8 text-brand-magenta mb-3"></i>
+<h3 class="font-orbitron font-semibold text-white text-base mb-2">Funnels & Landing Pages</h3>
+<p class="text-sm text-brand-gray leading-relaxed">Launch high‑converting funnels and pages without needing a designer or developer.</p>
+</div>
+
+<div class="glass-card rounded-xl p-6 md:p-7">
+<i data-lucide="users" class="w-8 h-8 text-brand-cyan mb-3"></i>
+<h3 class="font-orbitron font-semibold text-white text-base mb-2">CRM & Lead Tracking</h3>
+<p class="text-sm text-brand-gray leading-relaxed">Manage contacts, track leads, and organize your customer pipeline in one place.</p>
+</div>
+
+<div class="glass-card rounded-xl p-6 md:p-7">
+<i data-lucide="calendar" class="w-8 h-8 text-brand-violet mb-3"></i>
+<h3 class="font-orbitron font-semibold text-white text-base mb-2">Social Media Tools</h3>
+<p class="text-sm text-brand-gray leading-relaxed">Schedule posts, manage engagement, and keep your brand active across platforms.</p>
+</div>
+
+<div class="glass-card rounded-xl p-6 md:p-7">
+<i data-lucide="bar-chart-3" class="w-8 h-8 text-brand-magenta mb-3"></i>
+<h3 class="font-orbitron font-semibold text-white text-base mb-2">Analytics Dashboard</h3>
+<p class="text-sm text-brand-gray leading-relaxed">Track performance, conversions, and ROI so you always know what’s working.</p>
+</div>
 
 </div>
-          <p data-id="359" class="text-brand-gray max-w-2xl mx-auto text-sm leading-relaxed mb-8">AI FabGlow is proud to serve homeowners across all of New Jersey — from Newark to Cherry Hill, Trenton to Jersey City, and everywhere in between. Our AI-powered real estate process means faster evaluations, smarter offers, and smoother closings.</p>
-                    <!-- Counties -->
-                    <div data-id="360" class="flex flex-wrap justify-center gap-2">
-                        <span data-id="361" class="county-tag rounded-full px-3 py-1 text-xs text-brand-gray">Essex</span>
-                        <span data-id="362" class="county-tag rounded-full px-3 py-1 text-xs text-brand-gray">Hudson</span>
-                        <span data-id="363" class="county-tag rounded-full px-3 py-1 text-xs text-brand-gray">Middlesex</span>
-                        <span data-id="364" class="county-tag rounded-full px-3 py-1 text-xs text-brand-gray">Union</span>
-                        <span data-id="365" class="county-tag rounded-full px-3 py-1 text-xs text-brand-gray">Bergen</span>
-                        <span data-id="366" class="county-tag rounded-full px-3 py-1 text-xs text-brand-gray">Monmouth</span>
-                        <span data-id="367" class="county-tag rounded-full px-3 py-1 text-xs text-brand-gray">Ocean</span>
-                        <span data-id="368" class="county-tag rounded-full px-3 py-1 text-xs text-brand-gray">Mercer</span>
-                        <span data-id="369" class="county-tag rounded-full px-3 py-1 text-xs text-brand-gray">Camden</span>
-                        <span data-id="370" class="county-tag rounded-full px-3 py-1 text-xs text-brand-gray">Morris</span>
-                        <span data-id="371" class="county-tag rounded-full px-3 py-1 text-xs text-brand-gray">Somerset</span>
-                        <span data-id="372" class="county-tag rounded-full px-3 py-1 text-xs text-brand-gray">Passaic</span>
-                        <span data-id="373" class="county-tag rounded-full px-3 py-1 text-xs text-brand-gray">Burlington</span>
-                    </div>
-                </div>
-            </div>
-        </section>
+</div>
+</section>
 
-        <!-- ========== FAQ ACCORDION ========== -->
-        <section data-id="374" id="faq-section-o9p0" class="py-16 md:py-24 bg-brand-deeper reveal-section">
-            <div data-id="375" class="max-w-3xl mx-auto px-5">
-                <div data-id="376" class="text-center mb-12 md:mb-16">
-                    <h2 data-id="377" id="faq-title-q1r2" class="font-orbitron font-bold text-2xl md:text-3xl lg:text-4xl text-white mb-4 glow-text-violet">Frequently Asked Questions</h2>
-                </div>
-                <div data-id="378" class="space-y-4" id="faq-list-s3t4">
-                    <!-- FAQ 1 -->
-                    <div data-id="379" class="glass-card rounded-xl overflow-hidden faq-item">
-                        <button data-id="380" class="faq-trigger w-full flex items-center justify-between p-5 md:p-6 text-left cursor-pointer">
-                            <span data-id="381" class="text-white font-semibold text-sm md:text-base pr-4">Is this really free? What's the catch?</span>
-                            <i data-id="382" data-lucide="chevron-down" class="w-5 h-5 text-brand-violet faq-arrow flex-shrink-0"></i>
-                        </button>
-                        <div data-id="383" class="faq-answer px-5 md:px-6">
-                            <p data-id="384" class="text-sm text-brand-gray leading-relaxed pb-5">Yes, completely free. We make our money by buying your home at a fair price and reselling it. There are no fees, commissions, or costs to you whatsoever.</p>
-                        </div>
-                    </div>
-                    <!-- FAQ 2 -->
-                    <div data-id="385" class="glass-card rounded-xl overflow-hidden faq-item">
-                        <button data-id="386" class="faq-trigger w-full flex items-center justify-between p-5 md:p-6 text-left cursor-pointer">
-                            <span data-id="387" class="text-white font-semibold text-sm md:text-base pr-4">How do you determine your offer price?</span>
-                            <i data-id="388" data-lucide="chevron-down" class="w-5 h-5 text-brand-violet faq-arrow flex-shrink-0"></i>
-                        </button>
-                        <div data-id="389" class="faq-answer px-5 md:px-6">
-                            <p data-id="390" class="text-sm text-brand-gray leading-relaxed pb-5">We assess the property's current market value, condition, location, and comparable sales in your area. Our AI-powered evaluation tools help us move fast and make fair offers.</p>
-                        </div>
-                    </div>
-                    <!-- FAQ 3 -->
-                    <div data-id="391" class="glass-card rounded-xl overflow-hidden faq-item">
-                        <button data-id="392" class="faq-trigger w-full flex items-center justify-between p-5 md:p-6 text-left cursor-pointer">
-                            <span data-id="393" class="text-white font-semibold text-sm md:text-base pr-4">What if my house needs a lot of repairs?</span>
-                            <i data-id="394" data-lucide="chevron-down" class="w-5 h-5 text-brand-violet faq-arrow flex-shrink-0"></i>
-                        </button>
-                        <div data-id="395" class="faq-answer px-5 md:px-6">
-                            <p data-id="396" class="text-sm text-brand-gray leading-relaxed pb-5">That's totally fine — we specialize in buying homes in any condition. Damaged roof, bad plumbing, mold, foundation issues — we've seen it all and we buy it anyway.</p>
-                        </div>
-                    </div>
-                    <!-- FAQ 4 -->
-                    <div data-id="397" class="glass-card rounded-xl overflow-hidden faq-item">
-                        <button data-id="398" class="faq-trigger w-full flex items-center justify-between p-5 md:p-6 text-left cursor-pointer">
-                            <span data-id="399" class="text-white font-semibold text-sm md:text-base pr-4">How fast can you really close?</span>
-                            <i data-id="400" data-lucide="chevron-down" class="w-5 h-5 text-brand-violet faq-arrow flex-shrink-0"></i>
-                        </button>
-                        <div data-id="401" class="faq-answer px-5 md:px-6">
-                            <p data-id="402" class="text-sm text-brand-gray leading-relaxed pb-5">In ideal situations, we can close in as little as 7 days. On average, most closings happen within 14–21 days. We always work on your timeline.</p>
-                        </div>
-                    </div>
-                    <!-- FAQ 5 -->
-                    <div data-id="403" class="glass-card rounded-xl overflow-hidden faq-item">
-                        <button data-id="404" class="faq-trigger w-full flex items-center justify-between p-5 md:p-6 text-left cursor-pointer">
-                            <span data-id="405" class="text-white font-semibold text-sm md:text-base pr-4">Do I have to accept the offer?</span>
-                            <i data-id="406" data-lucide="chevron-down" class="w-5 h-5 text-brand-violet faq-arrow flex-shrink-0"></i>
-                        </button>
-                        <div data-id="407" class="faq-answer px-5 md:px-6">
-                            <p data-id="408" class="text-sm text-brand-gray leading-relaxed pb-5">Absolutely not. Our offers are 100% no-obligation. You can review it, think it over, and decide without any pressure from us.</p>
-                        </div>
-                    </div>
-                    <!-- FAQ 6 -->
-                    <div data-id="409" class="glass-card rounded-xl overflow-hidden faq-item">
-                        <button data-id="410" class="faq-trigger w-full flex items-center justify-between p-5 md:p-6 text-left cursor-pointer">
-                            <span data-id="411" class="text-white font-semibold text-sm md:text-base pr-4">What areas of New Jersey do you serve?</span>
-                            <i data-id="412" data-lucide="chevron-down" class="w-5 h-5 text-brand-violet faq-arrow flex-shrink-0"></i>
-                        </button>
-                        <div data-id="413" class="faq-answer px-5 md:px-6">
-                            <p data-id="414" class="text-sm text-brand-gray leading-relaxed pb-5">We serve all of New Jersey, including Essex, Hudson, Middlesex, Union, Bergen, Morris, Mercer, Camden, Ocean, Monmouth, Passaic, Somerset, and Burlington counties.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+<!-- STATS -->
+<section id="stats-bar-b8c9" class="py-12 bg-brand-dark reveal-section">
+<div class="max-w-6xl mx-auto px-5 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
 
-        <!-- ========== FINAL CTA BANNER ========== -->
-        <section data-id="415" id="final-cta-u5v6" class="py-16 md:py-24 bg-brand-black relative reveal-section" style="border-top: 2px solid rgba(123,47,255,0.3); border-bottom: 2px solid rgba(123,47,255,0.3);">
-            <div data-id="416" class="absolute inset-0 bg-gradient-to-br from-brand-violet/5 via-transparent to-brand-cyan/5"></div>
-            <div data-id="417" class="relative z-10 max-w-3xl mx-auto px-5 text-center">
-                <h2 data-id="418" id="final-cta-title-w7x8" class="font-orbitron font-bold text-2xl md:text-3xl lg:text-4xl text-white mb-4 glow-text-violet">Ready to Sell Your NJ Home Fast?</h2>
-                <p data-id="419" class="text-brand-gray text-base md:text-lg mb-8 max-w-xl mx-auto">Join hundreds of New Jersey homeowners who got a fair cash offer and moved on — stress-free.</p>
-                <a data-id="420" href="#get-offer" id="final-cta-btn-y9z0" class="gradient-cta text-white font-bold text-lg px-10 py-4 rounded-full glow-violet inline-flex items-center gap-2 min-h-[52px]">
-                    Get My Cash Offer Today
-                    <i data-id="421" data-lucide="arrow-right" class="w-5 h-5"></i>
-                </a>
-            </div>
-        </section>
-    </main>
+<div class="stat-item">
+<div data-count="500" data-suffix="+" class="text-3xl font-bold text-white mb-1"></div>
+<p class="text-brand-gray text-sm">Homes Evaluated</p>
+</div>
 
-    <!-- ========== FOOTER ========== -->
-    <footer data-id="422" id="footer-a1b2c" class="bg-brand-dark border-t border-brand-violet/15 py-12 md:py-16">
-        <div data-id="423" class="max-w-6xl mx-auto px-5">
-            <!-- Top row -->
-            <div data-id="424" class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-6 mb-10">
-                <!-- Logo + Tagline -->
-                <div data-id="425" class="md:col-span-1">
-                    <div data-id="426" class="flex items-center gap-2 mb-3">
-                        <span data-id="427" class="w-3 h-3 rounded-full bg-brand-violet shadow-[0_0_10px_rgba(123,47,255,0.8)]"></span>
-                        <span data-id="428" class="font-orbitron font-bold text-lg text-white">AI FabGlow</span>
-                    </div>
-                    <p data-id="429" class="text-xs text-brand-muted leading-relaxed">Where AI Meets Real Results</p>
-                </div>
-                <!-- Company -->
-                <div data-id="430">
-                    <h4 data-id="431" class="font-orbitron font-semibold text-white text-sm mb-4">Company</h4>
-                    <ul data-id="432" class="space-y-2">
-                        <li data-id="433"><a data-id="434" href="#hero-s3c4" class="text-sm text-brand-gray hover:text-brand-cyan transition-colors">Home</a></li>
-                        <li data-id="435"><a data-id="436" href="#who-we-help-e5f6" class="text-sm text-brand-gray hover:text-brand-cyan transition-colors">About</a></li>
-                        <li data-id="437"><a data-id="438" href="#how-it-works-k9l0" class="text-sm text-brand-gray hover:text-brand-cyan transition-colors">Services</a></li>
-                        <li data-id="439"><a data-id="440" href="#what-we-buy-m1n2" class="text-sm text-brand-gray hover:text-brand-cyan transition-colors">Portfolio</a></li>
-                    </ul>
-                </div>
-                <!-- Real Estate -->
-                <div data-id="441">
-                    <h4 data-id="442" class="font-orbitron font-semibold text-white text-sm mb-4">Real Estate</h4>
-                    <ul data-id="443" class="space-y-2">
-                        <li data-id="444"><a data-id="445" href="#how-it-works-k9l0" class="text-sm text-brand-gray hover:text-brand-cyan transition-colors">How It Works</a></li>
-                        <li data-id="446"><a data-id="447" href="#what-we-buy-m1n2" class="text-sm text-brand-gray hover:text-brand-cyan transition-colors">What We Buy</a></li>
-                        <li data-id="448"><a data-id="449" href="#get-offer" class="text-sm text-brand-gray hover:text-brand-cyan transition-colors">Sell My Home</a></li>
-                        <li data-id="450"><a data-id="451" href="#faq-section-o9p0" class="text-sm text-brand-gray hover:text-brand-cyan transition-colors">FAQ</a></li>
-                    </ul>
-                </div>
-                <!-- Contact -->
-                <div data-id="452">
-                    <h4 data-id="453" class="font-orbitron font-semibold text-white text-sm mb-4">Contact</h4>
-                    <ul data-id="454" class="space-y-2">
-                        <li data-id="455" class="flex items-center gap-2 text-sm text-brand-gray"><i data-id="456" data-lucide="phone" class="w-3.5 h-3.5 text-brand-violet"></i> (973) 555-0199</li>
-                        <li data-id="457" class="flex items-center gap-2 text-sm text-brand-gray"><i data-id="458" data-lucide="mail" class="w-3.5 h-3.5 text-brand-cyan"></i> info@aifabglow.com</li>
-                        <li data-id="459" class="flex items-center gap-2 text-sm text-brand-gray"><i data-id="460" data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-magenta"></i> New Jersey, USA</li>
-                        <li data-id="461" class="flex items-center gap-2 text-sm text-brand-gray"><i data-id="462" data-lucide="clock" class="w-3.5 h-3.5 text-brand-violet"></i> Mon–Fri, 9am–7pm</li>
-                    </ul>
-                </div>
-            </div>
-            <!-- Social icons -->
-            <div data-id="463" class="flex items-center justify-center gap-4 mb-8">
-                <a data-id="464" href="#" class="w-10 h-10 rounded-full bg-brand-card border border-brand-violet/20 flex items-center justify-center text-brand-gray hover:text-brand-cyan hover:border-brand-cyan transition-all" aria-label="Instagram"><i data-id="465" data-lucide="instagram" class="w-4 h-4"></i></a>
-                <a data-id="466" href="#" class="w-10 h-10 rounded-full bg-brand-card border border-brand-violet/20 flex items-center justify-center text-brand-gray hover:text-brand-cyan hover:border-brand-cyan transition-all" aria-label="Facebook"><i data-id="467" data-lucide="facebook" class="w-4 h-4"></i></a>
-                <a data-id="468" href="#" class="w-10 h-10 rounded-full bg-brand-card border border-brand-violet/20 flex items-center justify-center text-brand-gray hover:text-brand-cyan hover:border-brand-cyan transition-all" aria-label="LinkedIn"><i data-id="469" data-lucide="linkedin" class="w-4 h-4"></i></a>
-                <a data-id="470" href="#" class="w-10 h-10 rounded-full bg-brand-card border border-brand-violet/20 flex items-center justify-center text-brand-gray hover:text-brand-cyan hover:border-brand-cyan transition-all" aria-label="Twitter"><i data-id="471" data-lucide="twitter" class="w-4 h-4"></i></a>
-            </div>
-            <!-- Copyright -->
-            <div data-id="472" class="text-center border-t border-brand-violet/10 pt-6">
-                <p data-id="473" class="text-xs text-brand-muted mb-2">© 2025 AI FabGlow. All Rights Reserved.</p>
-                <p data-id="474" class="text-[10px] text-brand-muted/60 max-w-2xl mx-auto leading-relaxed">AI FabGlow is a real estate wholesaling company. We are not licensed real estate agents or brokers. We are investors who purchase properties directly from homeowners. All offers are subject to property evaluation and are not guaranteed.</p>
-                <p data-id="475" class="text-xs text-brand-muted/40 mt-4">Made by Copilot</p>
-            </div>
-        </div>
-    </footer>
+<div class="stat-item">
+<div data-count="14" data-suffix="-21" class="text-3xl font-bold text-white mb-1"></div>
+<p class="text-brand-gray text-sm">Day Closings</p>
+</div>
 
-    <script>
-        // ========== Initialize Lucide Icons ==========
-        lucide.createIcons();
+<div class="stat-item">
+<div data-count="100" data-suffix="%" class="text-3xl font-bold text-white mb-1"></div>
+<p class="text-brand-gray text-sm">No-Pressure Offers</p>
+</div>
 
-        // ========== Mobile Menu ==========
-        const mobileMenuBtn = document.getElementById('mobile-menu-btn-f6g7');
-        const mobileMenu = document.getElementById('mobile-menu-h8i9');
-        const mobileMenuClose = document.getElementById('mobile-menu-close-j0k1');
-        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+<div class="stat-item">
+<div data-count="12" data-suffix="+" class="text-3xl font-bold text-white mb-1"></div>
+<p class="text-brand-gray text-sm">NJ Counties Served</p>
+</div>
 
-        mobileMenuBtn.addEventListener('click', function() {
-            mobileMenu.classList.remove('hidden');
-            mobileMenu.classList.add('flex');
-            document.body.style.overflow = 'hidden';
-        });
+</div>
+</section>
 
-        function closeMobileMenu() {
-            mobileMenu.classList.add('hidden');
-            mobileMenu.classList.remove('flex');
-            document.body.style.overflow = '';
-        }
+<!-- WHO WE HELP -->
+<section id="who-we-help-e5f6" class="py-16 md:py-24 bg-brand-deeper reveal-section">
+<div class="max-w-6xl mx-auto px-5">
 
-        mobileMenuClose.addEventListener('click', closeMobileMenu);
-        mobileNavLinks.forEach(function(link) {
-            link.addEventListener('click', closeMobileMenu);
-        });
+<div class="text-center mb-12 md:mb-16">
+<h2 class="font-orbitron font-bold text-2xl md:text-3xl lg:text-4xl text-white mb-4 glow-text-violet">Who We Help</h2>
+<p class="text-brand-gray max-w-2xl mx-auto">We work with homeowners across New Jersey facing all kinds of situations.</p>
+</div>
 
-        // ========== Sticky Nav Scroll ==========
-        const navbar = document.getElementById('navbar-a1b2');
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 50) {
-                navbar.classList.add('nav-scrolled');
-            } else {
-                navbar.classList.remove('nav-scrolled');
-            }
-        });
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
-        // ========== Scroll Reveal (Intersection Observer) ==========
-        const revealSections = document.querySelectorAll('.reveal-section');
-        const revealObserver = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('revealed');
-                }
-            });
-        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+<div class="glass-card p-6 rounded-xl">
+<i data-lucide="home" class="w-8 h-8 text-brand-cyan mb-3"></i>
+<h3 class="font-orbitron text-white font-semibold mb-2">Inherited Homes</h3>
+<p class="text-brand-gray text-sm">Sell quickly without repairs or cleaning.</p>
+</div>
 
-        revealSections.forEach(function(section) {
-            revealObserver.observe(section);
-        });
+<div class="glass-card p-6 rounded-xl">
+<i data-lucide="alert-triangle" class="w-8 h-8 text-brand-magenta mb-3"></i>
+<h3 class="font-orbitron text-white font-semibold mb-2">Foreclosure</h3>
+<p class="text-brand-gray text-sm">Stop the process and get a fresh start.</p>
+</div>
 
-        // ========== Counter Animation ==========
-        const statItems = document.querySelectorAll('.stat-item > div[data-count]');
-        let statsAnimated = false;
+<div class="glass-card p-6 rounded-xl">
+<i data-lucide="wrench" class="w-8 h-8 text-brand-violet mb-3"></i>
+<h3 class="font-orbitron text-white font-semibold mb-2">Major Repairs</h3>
+<p class="text-brand-gray text-sm">We buy homes in any condition.</p>
+</div>
 
-        const statsObserver = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-                if (entry.isIntersecting && !statsAnimated) {
-                    statsAnimated = true;
-                    animateCounters();
-                }
-            });
-        }, { threshold: 0.5 });
+<div class="glass-card p-6 rounded-xl">
+<i data-lucide="dollar-sign" class="w-8 h-8 text-brand-cyan mb-3"></i>
+<h3 class="font-orbitron text-white font-semibold mb-2">Financial Hardship</h3>
+<p class="text-brand-gray text-sm">Get cash fast when you need it most.</p>
+</div>
 
-        const statsBar = document.getElementById('stats-bar-b8c9');
-        if (statsBar) {
-            statsObserver.observe(statsBar);
-        }
+<div class="glass-card p-6 rounded-xl">
+<i data-lucide="briefcase" class="w-8 h-8 text-brand-magenta mb-3"></i>
+<h3 class="font-orbitron text-white font-semibold mb-2">Relocation</h3>
+<p class="text-brand-gray text-sm">Move on your timeline, stress‑free.</p>
+</div>
 
-        function animateCounters() {
-            statItems.forEach(function(item) {
-                const target = parseInt(item.dataset.count);
-                const suffix = item.dataset.suffix || '';
-                const prefix = item.dataset.prefix || '';
-                const duration = 2000;
-                const startTime = performance.now();
+<div class="glass-card p-6 rounded-xl">
+<i data-lucide="key" class="w-8 h-8 text-brand-violet mb-3"></i>
+<h3 class="font-orbitron text-white font-semibold mb-2">Landlords</h3>
+<p class="text-brand-gray text-sm">Sell rentals with or without tenants.</p>
+</div>
 
-                function updateCounter(currentTime) {
-                    const elapsed = currentTime - startTime;
-                    const progress = Math.min(elapsed / duration, 1);
-                    // Ease out cubic
-                    const eased = 1 - Math.pow(1 - progress, 3);
-                    const current = Math.round(eased * target);
-                    item.textContent = prefix + current + suffix;
-                    if (progress < 1) {
-                        requestAnimationFrame(updateCounter);
-                    }
-                }
-                requestAnimationFrame(updateCounter);
-            });
-        }
+</div>
+</div>
+</section>
 
-        // ========== Hero Particles ==========
-        const particleContainer = document.getElementById('particles-l2m3');
-        function createParticles() {
-            const colors = ['rgba(123,47,255,', 'rgba(0,229,255,', 'rgba(255,0,200,'];
-            for (let i = 0; i < 40; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                const color = colors[Math.floor(Math.random() * colors.length)];
-                const size = Math.random() * 4 + 1;
-                const opacity = Math.random() * 0.5 + 0.2;
-                particle.style.cssText =
-                    'width:' + size + 'px;' +
-                    'height:' + size + 'px;' +
-                    'background:' + color + opacity + ');' +
-                    'left:' + (Math.random() * 100) + '%;' +
-                    'animation-duration:' + (Math.random() * 15 + 10) + 's;' +
-                    'animation-delay:' + (Math.random() * 10) + 's;' +
-                    'box-shadow: 0 0 ' + (size * 2) + 'px ' + color + (opacity * 0.8) + ');';
-                particleContainer.appendChild(particle);
-            }
-        }
-        createParticles();
+<!-- HOW IT WORKS -->
+<section id="how-it-works-k9l0" class="py-16 md:py-24 bg-brand-dark reveal-section">
+<div class="max-w-6xl mx-auto px-5">
 
-        // ========== FAQ Accordion ==========
-        const faqTriggers = document.querySelectorAll('.faq-trigger');
-        faqTriggers.forEach(function(trigger) {
-            trigger.addEventListener('click', function() {
-                const faqItem = this.closest('.faq-item');
-                const answer = faqItem.querySelector('.faq-answer');
-                const arrow = this.querySelector('.faq-arrow');
-                const isOpen = answer.classList.contains('open');
+<div class="text-center mb-12 md:mb-16">
+<h2 class="font-orbitron font-bold text-2xl md:text-3xl lg:text-4xl text-white mb-4 glow-text-violet">How It Works</h2>
+<p class="text-brand-gray max-w-2xl mx-auto">A simple, transparent process designed to make selling your home fast and stress‑free.</p>
+</div>
 
-                // Close all
-                document.querySelectorAll('.faq-answer.open').forEach(function(a) {
-                    a.classList.remove('open');
-                });
-                document.querySelectorAll('.faq-arrow.rotated').forEach(function(a) {
-                    a.classList.remove('rotated');
-                });
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 
-                // Toggle current
-                if (!isOpen) {
-                    answer.classList.add('open');
-                    arrow.classList.add('rotated');
-                }
-            });
-        });
+<div class="glass-card p-6 rounded-xl text-center">
+<i data-lucide="file-text" class="w-10 h-10 text-brand-cyan mx-auto mb-4"></i>
+<h3 class="font-orbitron text-white font-semibold mb-2">1. Tell Us About Your Home</h3>
+<p class="text-brand-gray text-sm">Fill out our quick form or call us directly.</p>
+</div>
 
-        // ========== Form Validation & Submission ==========
-        const leadForm = document.getElementById('lead-form-a5b6');
-        const formContainer = document.getElementById('form-container-y3z4');
-        const formSuccess = document.getElementById('form-success-e9f0');
+<div class="glass-card p-6 rounded-xl text-center">
+<i data-lucide="search" class="w-10 h-10 text-brand-magenta mx-auto mb-4"></i>
+<h3 class="font-orbitron text-white font-semibold mb-2">2. We Evaluate Your Property</h3>
+<p class="text-brand-gray text-sm">We review condition, location, and market data.</p>
+</div>
 
-        // Blur validation
-        const requiredFields = leadForm.querySelectorAll('[required]');
-        requiredFields.forEach(function(field) {
-            field.addEventListener('blur', function() {
-                validateField(field);
-            });
-            field.addEventListener('input', function() {
-                if (field.classList.contains('error')) {
-                    validateField(field);
-                }
-            });
-        });
+<div class="glass-card p-6 rounded-xl text-center">
+<i data-lucide="handshake" class="w-10 h-10 text-brand-violet mx-auto mb-4"></i>
+<h3 class="font-orbitron text-white font-semibold mb-2">3. Get a Fair Cash Offer</h3>
+<p class="text-brand-gray text-sm">No pressure. No obligation. Your timeline.</p>
+</div>
 
-        function validateField(field) {
-            const errorMsg = field.parentElement.querySelector('.error-msg');
-            let isValid = true;
+</div>
+</div>
+</section>
 
-            if (!field.value.trim()) {
-                isValid = false;
-            } else if (field.type === 'email' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value)) {
-                isValid = false;
-            }
+<!-- WHAT WE BUY -->
+<section id="what-we-buy-m1n2" class="py-16 md:py-24 bg-brand-deeper reveal-section">
+<div class="max-w-6xl mx-auto px-5">
 
-            if (!isValid) {
-                field.classList.add('error');
-                if (errorMsg) errorMsg.classList.remove('hidden');
-            } else {
-                field.classList.remove('error');
-                if (errorMsg) errorMsg.classList.add('hidden');
-            }
+<div class="text-center mb-12 md:mb-16">
+<h2 class="font-orbitron font-bold text-2xl md:text-3xl lg:text-4xl text-white mb-4 glow-text-violet">
+We Buy Houses in Any Situation
+</h2>
+<p class="text-brand-gray max-w-2xl mx-auto">
+No matter your situation or property condition, we’ll review your home and present a fair, no‑pressure cash offer.
+</p>
+</div>
 
-            return isValid;
-        }
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
-        leadForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+<div class="glass-card p-6 rounded-xl">
+<i data-lucide="home" class="w-8 h-8 text-brand-cyan mb-3"></i>
+<h3 class="font-orbitron text-white font-semibold mb-2">Inherited Homes</h3>
+<p class="text-brand-gray text-sm">Inherited a property you don’t want to keep? We’ll buy it as‑is, on your timeline.</p>
+</div>
 
-            let allValid = true;
-            requiredFields.forEach(function(field) {
-                if (!validateField(field)) {
-                    allValid = false;
-                }
-            });
+<div class="glass-card p-6 rounded-xl">
+<i data-lucide="alert-octagon" class="w-8 h-8 text-brand-magenta mb-3"></i>
+<h3 class="font-orbitron text-white font-semibold mb-2">Foreclosure / Pre‑Foreclosure</h3>
+<p class="text-brand-gray text-sm">Behind on payments or facing foreclosure? We can help you sell before it’s too late.</p>
+</div>
 
-            if (!allValid) return;
+<div class="glass-card p-6 rounded-xl">
+<i data-lucide="wrench" class="w-8 h-8 text-brand-violet mb-3"></i>
+<h3 class="font-orbitron text-white font-semibold mb-2">Major Repairs / Fixer‑Uppers</h3>
+<p class="text-brand-gray text-sm">From outdated to severely damaged, we buy homes that need serious work.</p>
+</div>
 
-            // Collect form data
-            const formData = new FormData(leadForm);
-            const data = {};
-            formData.forEach(function(value, key) {
-                data[key] = value;
-            });
-            data.submittedAt = new Date().toISOString();
+<div class="glass-card p-6 rounded-xl">
+<i data-lucide="slash" class="w-8 h-8 text-brand-cyan mb-3"></i>
+<h3 class="font-orbitron text-white font-semibold mb-2">Vacant Properties</h3>
+<p class="text-brand-gray text-sm">Tired of paying taxes and utilities on an empty house? Turn it into cash quickly.</p>
+</div>
 
-            // Store in localStorage
-            let leads = [];
-            try {
-                const stored = localStorage.getItem('aifabglow_leads');
-                if (stored) leads = JSON.parse(stored);
-            } catch(e) { /* ignore */ }
-            leads.push(data);
-            try {
-                localStorage.setItem('aifabglow_leads', JSON.stringify(leads));
-            } catch(e) { /* ignore */ }
+<div class="glass-card p-6 rounded-xl">
+<i data-lucide="flame" class="w-8 h-8 text-brand-magenta mb-3"></i>
+<h3 class="font-orbitron text-white font-semibold mb-2">Fire‑Damaged Homes</h3>
+<p class="text-brand-gray text-sm">Fire or smoke damage? We’ll still make a fair offer, no repairs required.</p>
+</div>
 
-            // Show success state
-            const firstName = data.fullName ? data.fullName.split(' ')[0] : 'there';
-            const successHeading = document.getElementById('success-heading-g1h2');
-            const successMessage = document.getElementById('success-message-i3j4');
+<div class="glass-card p-6 rounded-xl">
+<i data-lucide="heart-crack" class="w-8 h-8 text-brand-violet mb-3"></i>
+<h3 class="font-orbitron text-white font-semibold mb-2">Divorce Sales</h3>
+<p class="text-brand-gray text-sm">Need to sell quickly due to divorce? We offer a private, respectful solution.</p>
+</div>
 
-            successHeading.textContent = 'Thank you, ' + firstName + '!';
-            let msg = "We've received your information and a member of our team will contact you within 24 hours. Check your email for confirmation.";
-            if (leads.length > 1) {
-                msg += ' (Submission #' + leads.length + ')';
-            }
-            successMessage.textContent = msg;
+<div class="glass-card p-6 rounded-xl">
+<i data-lucide="navigation" class="w-8 h-8 text-brand-cyan mb-3"></i>
+<h3 class="font-orbitron text-white font-semibold mb-2">Relocation</h3>
+<p class="text-brand-gray text-sm">Moving for work or a fresh start? We help you sell fast so you can move forward.</p>
+</div>
 
-            leadForm.classList.add('hidden');
-            formSuccess.classList.remove('hidden');
+<div class="glass-card p-6 rounded-xl">
+<i data-lucide="key-round" class="w-8 h-8 text-brand-magenta mb-3"></i>
+<h3 class="font-orbitron text-white font-semibold mb-2">Tired Landlords / Rentals</h3>
+<p class="text-brand-gray text-sm">Problem tenants, constant repairs, or burnout? Sell your rental with or without tenants.</p>
+</div>
 
-            // Reinitialize lucide icons for the success checkmark
-            lucide.createIcons();
-        });
+<div class="glass-card p-6 rounded-xl">
+<i data-lucide="file-warning" class="w-8 h-8 text-brand-violet mb-3"></i>
+<h3 class="font-orbitron text-white font-semibold mb-2">Tax Delinquent / Code Violations</h3>
+<p class="text-brand-gray text-sm">Behind on taxes or dealing with code issues? We’ll still review and make an offer.</p>
+</div>
 
-        // ========== Smooth scroll for anchor links ==========
-        document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
-            anchor.addEventListener('click', function(e) {
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                const targetEl = document.querySelector(targetId);
-                if (targetEl) {
-                    e.preventDefault();
-                    const navHeight = navbar.offsetHeight;
-                    const targetPosition = targetEl.getBoundingClientRect().top + window.pageYOffset - navHeight;
-                    window.scrollTo({
-                        top: targetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    </script>
+</div>
+</div>
+</section>
+<section id="benefits-x7y8" class="py-16 md:py-24 bg-brand-dark reveal-section">
+<div class="max-w-6xl mx-auto px-5">
+<div class="text-center mb-12 md:mb-16">
+<h2 class="font-orbitron font-bold text-2xl md:text-3xl lg:text-4xl text-white mb-4 glow-text-violet">Why NJ Homeowners Choose Us</h2>
+<p class="text-brand-gray max-w-2xl mx-auto">A faster, simpler, more transparent way to sell your home.</p>
+</div>
+
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+<div class="glass-card p-6 rounded-xl">
+<i data-lucide="zap" class="w-8 h-8 text-brand-cyan mb-3"></i>
+<h3 class="font-orbitron text-white font-semibold mb-2">Fast Closings</h3>
+<p class="text-brand-gray text-sm">Close in as little as 7 days.</p>
+</div>
+
+<div class="glass-card p-6 rounded-xl">
+<i data-lucide="shield-check" class="w-8 h-8 text-brand-magenta mb-3"></i>
+<h3 class="font-orbitron text-white font-semibold mb-2">No Repairs Needed</h3>
+<p class="text-brand-gray text-sm">We buy homes exactly as they are.</p>
+</div>
+
+<div class="glass-card p-6 rounded-xl">
+<i data-lucide="x-circle" class="w-8 h-8 text-brand-violet mb-3"></i>
+<h3 class="font-orbitron text-white font-semibold mb-2">No Fees or Commissions</h3>
+<p class="text-brand-gray text-sm">You keep more money in your pocket.</p>
+</div>
+
+<div class="glass-card p-6 rounded-xl">
+<i data-lucide="handshake" class="w-8 h-8 text-brand-cyan mb-3"></i>
+<h3 class="font-orbitron text-white font-semibold mb-2">No‑Pressure Offers</h3>
+<p class="text-brand-gray text-sm">Review your offer with zero obligation.</p>
+</div>
+
+<div class="glass-card p-6 rounded-xl">
+<i data-lucide="clock" class="w-8 h-8 text-brand-magenta mb-3"></i>
+<h3 class="font-orbitron text-white font-semibold mb-2">Your Timeline</h3>
+<p class="text-brand-gray text-sm">Move when you’re ready — not before.</p>
+</div>
+
+<div class="glass-card p-6 rounded-xl">
+<i data-lucide="map-pin" class="w-8 h-8 text-brand-cyan mb-3"></i>
+<h3 class="font-orbitron text-white font-semibold mb-2">Local NJ Experts</h3>
+<p class="text-brand-gray text-sm">We understand your neighborhood and market.</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<section id="testimonials-q3r4" class="py-16 md:py-24 bg-brand-deeper reveal-section">
+<div class="max-w-6xl mx-auto px-5">
+<div class="text-center mb-12 md:mb-16">
+<h2 class="font-orbitron font-bold text-2xl md:text-3xl lg:text-4xl text-white mb-4 glow-text-violet">What NJ Homeowners Say</h2>
+<p class="text-brand-gray max-w-2xl mx-auto">Real stories from real people we’ve helped across New Jersey.</p>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+<div class="glass-card p-6 rounded-xl">
+<p class="text-brand-gray text-sm mb-4">“I needed to sell fast after inheriting my mother’s home. They made everything simple and stress‑free.”</p>
+<div class="flex items-center gap-3">
+<i data-lucide="user" class="w-6 h-6 text-brand-cyan"></i>
+<span class="text-white text-sm font-semibold">Maria – Newark, NJ</span>
+</div>
+</div>
+
+<div class="glass-card p-6 rounded-xl">
+<p class="text-brand-gray text-sm mb-4">“They gave me a fair offer and closed in under two weeks. Highly recommend.”</p>
+<div class="flex items-center gap-3">
+<i data-lucide="user" class="w-6 h-6 text-brand-magenta"></i>
+<span class="text-white text-sm font-semibold">James – Trenton, NJ</span>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+<section id="get-offer" class="py-16 md:py-24 bg-brand-dark reveal-section">
+<div class="max-w-4xl mx-auto px-5">
+<div id="form-container" class="glass-card p-8 rounded-xl">
+
+<h2 class="font-orbitron text-2xl md:text-3xl text-white font-bold mb-6 text-center glow-text-violet">
+Get Your Free Cash Offer
+</h2>
+
+<form id="lead-form-z4a5" class="space-y-5">
+
+<div>
+<label class="block text-sm text-brand-gray mb-1">Full Name</label>
+<input type="text" name="fullName" class="w-full p-3 rounded bg-brand-deeper border border-brand-violet/20 text-white" required>
+</div>
+
+<div>
+<label class="block text-sm text-brand-gray mb-1">Email</label>
+<input type="email" name="email" class="w-full p-3 rounded bg-brand-deeper border border-brand-violet/20 text-white" required>
+</div>
+
+<div>
+<label class="block text-sm text-brand-gray mb-1">Phone</label>
+<input type="tel" name="phone" class="w-full p-3 rounded bg-brand-deeper border border-brand-violet/20 text-white" required>
+</div>
+
+<div>
+<label class="block text-sm text-brand-gray mb-1">Property Address</label>
+<input type="text" name="address" class="w-full p-3 rounded bg-brand-deeper border border-brand-violet/20 text-white" required>
+</div>
+
+<div>
+<label class="block text-sm text-brand-gray mb-1">Reason for Selling</label>
+<select name="reason" class="w-full p-3 rounded bg-brand-deeper border border-brand-violet/20 text-white">
+<option value="">Select one…</option>
+<option value="foreclosure">Avoiding Foreclosure</option>
+<option value="inherited">Inherited Property</option>
+<option value="relocation">Relocating</option>
+<option value="downsizing">Downsizing</option>
+<option value="repairs">Too Many Repairs</option>
+<option value="other">Other</option>
+</select>
+</div>
+
+<button type="submit" class="gradient-cta w-full text-white font-bold py-4 rounded-full glow-violet">
+Get My Cash Offer
+</button>
+
+</form>
+
+<div id="form-success" class="hidden text-center mt-6">
+<h3 id="success-heading-g1h2" class="text-2xl font-orbitron text-white mb-2"></h3>
+<p id="success-message-i3j4" class="text-brand-gray"></p>
+</div>
+
+</div>
+</div>
+</section>
+
+<script>
+const revealSections=document.querySelectorAll(".reveal-section"),
+revealObserver=new IntersectionObserver(e=>{e.forEach(e=>{e.isIntersecting&&e.target.classList.add("revealed")})},{threshold:.15});
+revealSections.forEach(e=>revealObserver.observe(e));
+</script>
+
+<script>
+const mobileMenuBtn=document.getElementById("mobile-menu-btn-f6g7"),
+mobileMenu=document.getElementById("mobile-menu-h8i9"),
+mobileMenuClose=document.getElementById("mobile-menu-close-j0k1");
+mobileMenuBtn.addEventListener("click",()=>{mobileMenu.classList.remove("hidden")});
+mobileMenuClose.addEventListener("click",()=>{mobileMenu.classList.add("hidden")});
+document.querySelectorAll(".mobile-nav-link").forEach(e=>{
+e.addEventListener("click",()=>{mobileMenu.classList.add("hidden")});
+});
+</script>
+
+<script>
+const particleContainer=document.getElementById("particles-l2m3");
+function createParticle(){
+const e=document.createElement("div");
+e.classList.add("particle");
+const t=4*Math.random()+2;
+e.style.width=${t}px;
+e.style.height=${t}px;
+e.style.left=${100*Math.random()}%;
+e.style.bottom="-20px";
+e.style.background=Math.random()>.5?"#7b2fff":"#00e5ff";
+e.style.animationDuration=${4*Math.random()+3}s;
+particleContainer.appendChild(e);
+setTimeout(()=>e.remove(),7000);
+}
+setInterval(createParticle,200);
+</script>
+
+<script>
+const statItems=document.querySelectorAll(".stat-item div"),
+statObserver=new IntersectionObserver(e=>{e.forEach(e=>{
+if(e.isIntersecting&&!e.target.classList.contains("counted")){
+e.target.classList.add("counted");
+const t=parseInt(e.target.getAttribute("data-count")),
+n=e.target.getAttribute("data-suffix")||"";
+let a=0;
+const r=setInterval(()=>{
+a+=Math.ceil(t/60);
+a>=t&&(a=t,clearInterval(r));
+e.target.textContent=a+n;
+},20);
+}
+})},{threshold:.4});
+statItems.forEach(e=>statObserver.observe(e));
+</script>
+
+<script>
+const leadForm=document.getElementById("lead-form-z4a5"),
+formContainer=document.getElementById("form-container"),
+formSuccess=document.getElementById("form-success"),
+successHeading=document.getElementById("success-heading-g1h2"),
+successMessage=document.getElementById("success-message-i3j4");
+
+leadForm.addEventListener("submit",e=>{
+e.preventDefault();
+const t=new FormData(leadForm).get("fullName");
+successHeading.textContent=Thank You, ${t}!;
+successMessage.textContent="We've received your request. Our team will contact you shortly with your cash offer.";
+leadForm.classList.add("hidden");
+formSuccess.classList.remove("hidden");
+});
+</script>
+
+<script>
+lucide.createIcons();
+</script>
+
 </body>
 </html>
