@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Deal.ai — AI Marketing Platform</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Glow Theme Styles -->
+  <style>
+    .glow-text {
+      text-shadow: 0 0 10px rgba(139, 92, 246, 0.8), 0 0 20px rgba(59, 130, 246, 0.6);
+    }
+    .glass {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .glow-border {
+      border: 1px solid rgba(139, 92, 246, 0.4);
+      box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
+    }
+    .glow-btn {
+      background: linear-gradient(90deg, #7c3aed, #06b6d4);
+      box-shadow: 0 0 20px rgba(124, 58, 237, 0.6);
+    }
+    .glow-btn:hover {
+      box-shadow: 0 0 30px rgba(124, 58, 237, 0.9);
+      transform: translateY(-2px);
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body class="bg-gray-950 text-white relative">
+
+  <!-- Grid Background -->
+  <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 pointer-events-none"></div>
+
+  <!-- Header -->
+  <header class="p-6 border-b border-white/10 relative z-10">
+    <nav class="flex justify-between items-center max-w-7xl mx-auto">
+      <a href="/" class="text-2xl font-bold glow-text">AI FabGlow</a>
+      <div class="flex gap-6">
+        <a href="/" class="hover:text-cyan-400 transition">Home</a>
+        <a href="/deal-ai" class="text-cyan-400 font-semibold">Deal.ai</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Deal.ai Section -->
+  <section class="max-w-7xl mx-auto py-20 px-6 relative z-10">
+
+    <h1 class="text-5xl font-extrabold mb-6 glow-text reveal">Deal.ai — AI Marketing Platform</h1>
+
+    <p class="text-xl text-gray-300 mb-12 max-w-3xl reveal">
+      Deal.ai helps entrepreneurs, small business owners, and service providers automate their marketing,
+      grow their brand, and attract more customers — all from one powerful AI‑driven dashboard.
+    </p>
+
+    <!-- Pricing Buttons -->
+    <div class="flex flex-col md:flex-row gap-6 mb-20 reveal">
+      <a href="https://buy.stripe.com/4gM5kC8rfgs3gbDadAgw001"
+         class="px-8 py-4 rounded-xl text-lg font-semibold text-white glow-btn transition">
+        Premium Marketing Starter Package ($3,500)
+      </a>
+
+      <a href="https://buy.stripe.com/9B6eVcdLz5Np8Jb85sgw000"
+         class="px-8 py-4 rounded-xl text-lg font-semibold text-white glow-btn transition">
+        Deal.ai Automation Membership ($299.99/mo)
+      </a>
+    </div>
+
+    <!-- Features Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+      <div class="glass glow-border p-8 rounded-2xl reveal">
+        <h3 class="text-2xl font-semibold mb-3 glow-text">AI Content Creation</h3>
+        <p class="text-gray-300">Generate social posts, emails, ads, scripts, and more instantly.</p>
+      </div>
+
+      <div class="glass glow-border p-8 rounded-2xl reveal">
+        <h3 class="text-2xl font-semibold mb-3 glow-text">Email & SMS Automation</h3>
+        <p class="text-gray-300">Build automated follow‑ups and nurture sequences with ease.</p>
+      </div>
+
+      <div class="glass glow-border p-8 rounded-2xl reveal">
+        <h3 class="text-2xl font-semibold mb-3 glow-text">Funnels & Landing Pages</h3>
+        <p class="text-gray-300">Launch high‑converting funnels without a designer.</p>
+      </div>
+
+      <div class="glass glow-border p-8 rounded-2xl reveal">
+        <h3 class="text-2xl font-semibold mb-3 glow-text">CRM & Lead Tracking</h3>
+        <p class="text-gray-300">Manage contacts and track leads in one place.</p>
+      </div>
+
+      <div class="glass glow-border p-8 rounded-2xl reveal">
+        <h3 class="text-2xl font-semibold mb-3 glow-text">Social Media Tools</h3>
+        <p class="text-gray-300">Schedule posts and manage engagement effortlessly.</p>
+      </div>
+
+      <div class="glass glow-border p-8 rounded-2xl reveal">
+        <h3 class="text-2xl font-semibold mb-3 glow-text">Analytics Dashboard</h3>
+        <p class="text-gray-300">Track performance and ROI with real‑time insights.</p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- Scroll Reveal Script -->
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const revealOnScroll = () => {
+      reveals.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          el.classList.add('visible');
+        }
+      });
+    };
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+  </script>
+
+</body>
+</html>
