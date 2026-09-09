@@ -1,4 +1,6 @@
 User-agent: *
+Disallow: /fabglowmktdeal-ai.html
+Disallow: /speed-up-my-offer.html
+Disallow: /index.html
 Allow: /
 
-Sitemap: https://fabglowrealestate.com/sitemap.xml
