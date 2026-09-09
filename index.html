@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Allow Google & Bing indexing -->
-  <meta name="robots" content="index, follow">
-  <meta name="googlebot" content="index, follow">
-  <meta name="bingbot" content="index, follow">
-
-  <!-- Block Amazon & Pinterest ONLY -->
-  <meta name="pinterestbot" content="noindex, nofollow">
-  <meta name="amazonbot" content="noindex, nofollow">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- SEO -->
   <title>FabGlow Real Estate — Fast Cash Offers for NJ Homes</title>
   <meta name="description" content="Sell your New Jersey home fast with no repairs, no agents, and no fees. Get a fair cash offer within 24 hours.">
+
+  <!-- Indexing -->
+  <meta name="robots" content="index, follow">
+  <meta name="googlebot" content="index, follow">
+  <meta name="bingbot" content="index, follow">
+  <meta name="pinterestbot" content="noindex, nofollow">
+  <meta name="amazonbot" content="noindex, nofollow">
 
   <!-- OpenGraph -->
   <meta property="og:type" content="website">
@@ -21,53 +22,29 @@
   <meta property="og:url" content="https://fabglowrealestate.com">
   <meta property="og:image" content="https://fabglowrealestate.com/og-image.jpg">
 
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-
-  <!-- JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "FabGlow Real Estate",
-    "url": "https://fabglowrealestate.com",
-    "logo": "https://fabglowrealestate.com/logo.png",
-    "sameAs": [
-      "https://www.instagram.com/fabglowrealestate",
-      "https://www.facebook.com/fabglowrealestate"
-    ],
-    "description": "New Jersey real estate solutions offering fast, fair cash offers with no repairs, no agents, and no hassle."
-  }
-  </script>
-
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Tailwind + Icons -->
+  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/lucide@latest"></script>
 
   <script>
-  tailwind.config = {
-    theme: {
-      extend: {
-        colors: {
-          'brand-dark': '#0a0a0f',
-          'brand-deeper': '#0f0f17',
-          'brand-card': 'rgba(255,255,255,0.04)',
-          'brand-gray': '#b3b3c2',
-          'brand-muted': '#7a7a8c',
-          'brand-violet': '#7b2fff',
-          'brand-cyan': '#00e5ff',
-          'brand-magenta': '#ff00c8'
-        },
-        fontFamily: {
-          orbitron: ['Orbitron', 'sans-serif'],
-          inter: ['Inter', 'sans-serif']
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'brand-dark': '#0a0a0f',
+            'brand-deeper': '#0f0f17',
+            'brand-card': 'rgba(255,255,255,0.04)',
+            'brand-gray': '#b3b3c2',
+            'brand-muted': '#7a7a8c',
+            'brand-violet': '#7b2fff',
+            'brand-cyan': '#00e5ff'
+          },
+          fontFamily: {
+            orbitron: ['Orbitron', 'sans-serif'],
+            inter: ['Inter', 'sans-serif']
+          }
         }
       }
-    }
-  };
+    };
   </script>
 
   <style>
@@ -81,64 +58,53 @@
   </style>
 </head>
 
-<!-- GA4 + Google Ads -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-TLEHXSVCX"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-TLEHXSVCX');
-  gtag('config', 'AW-18156599607');
-</script>
-
 <body class="bg-brand-dark">
 
-<!-- HEADER -->
-<header id="navbar-a1b2" class="fixed top-0 left-0 w-full z-50 bg-brand-dark/80 backdrop-blur border-b border-brand-violet/10">
+<!-- HEADER (REAL ESTATE BRAND) -->
+<header class="fixed top-0 left-0 w-full z-50 bg-brand-dark/80 backdrop-blur border-b border-brand-violet/10">
   <div class="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
     <div class="flex items-center gap-2">
       <span class="w-3 h-3 rounded-full bg-brand-violet shadow-[0_0_10px_rgba(123,47,255,0.8)]"></span>
-      <span class="font-orbitron font-bold text-lg text-white">AI FabGlow</span>
+      <span class="font-orbitron font-bold text-lg text-white">FabGlow Real Estate</span>
     </div>
 
     <nav class="hidden md:flex items-center gap-8 text-sm">
-      <a href="#hero-s3c4" class="text-brand-gray hover:text-brand-cyan transition">Home</a>
-      <a href="#who-we-help-e5f6" class="text-brand-gray hover:text-brand-cyan transition">About</a>
-      <a href="#how-it-works-k9l0" class="text-brand-gray hover:text-brand-cyan transition">How It Works</a>
+      <a href="#hero" class="text-brand-gray hover:text-brand-cyan transition">Home</a>
+      <a href="#who-we-help" class="text-brand-gray hover:text-brand-cyan transition">Who We Help</a>
+      <a href="#how-it-works" class="text-brand-gray hover:text-brand-cyan transition">How It Works</a>
       <a href="#get-offer" class="text-brand-gray hover:text-brand-cyan transition">Get Offer</a>
-      <a href="/fabglowmktdeal-ai" class="text-brand-gray hover:text-brand-cyan transition">FabGlowMktDeal.ai</a>
     </nav>
   </div>
 </header>
 
-<!-- MAIN CONTENT WRAPPER (fixes your blank page issue) -->
-<main class="pt-32">
+<!-- MAIN -->
+<main class="pt-48 md:pt-56">
 
 <!-- HERO -->
-<section id="hero-s3c4" class="relative py-24 md:py-40 bg-brand-deeper reveal-section">
-  <div class="relative z-10 max-w-4xl mx-auto px-5 text-center">
-    <h1 class="font-orbitron font-bold text-3xl md:text-5xl lg:text-6xl text-white mb-6 glow-text-violet">
+<section id="hero" class="relative py-24 md:py-40 bg-brand-deeper reveal-section">
+  <div class="max-w-4xl mx-auto px-5 text-center">
+    <h1 class="font-orbitron font-bold text-4xl md:text-6xl text-white mb-6 glow-text-violet">
       Sell Your NJ Home Fast — For a Fair Cash Offer
     </h1>
 
-    <p class="text-brand-gray text-base md:text-lg max-w-2xl mx-auto mb-8">
+    <p class="text-brand-gray text-lg max-w-2xl mx-auto mb-8">
       No repairs. No agents. No fees. Just a fast, fair cash offer from a trusted New Jersey home‑buying team.
     </p>
 
     <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
       <a href="#get-offer" class="gradient-cta text-white font-bold px-10 py-4 rounded-full glow-violet inline-flex items-center gap-2">
-        Get My Cash Offer <i data-lucide="arrow-right" class="w-5 h-5"></i>
+        Get My Cash Offer
       </a>
 
       <a href="speed-up-my-offer.html" class="text-brand-cyan font-semibold hover:text-white transition inline-flex items-center gap-2">
-        Speed Up My Offer <i data-lucide="zap" class="w-5 h-5"></i>
+        Speed Up My Offer
       </a>
     </div>
   </div>
 </section>
 
 <!-- STATS -->
-<section id="stats-bar-b8c9" class="py-12 bg-brand-dark reveal-section">
+<section class="py-12 bg-brand-dark reveal-section">
   <div class="max-w-6xl mx-auto px-5 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
     <div><div class="text-3xl font-bold text-white">500+</div><p class="text-brand-gray text-sm">Homes Evaluated</p></div>
     <div><div class="text-3xl font-bold text-white">14–21</div><p class="text-brand-gray text-sm">Day Closings</p></div>
@@ -148,76 +114,33 @@
 </section>
 
 <!-- WHO WE HELP -->
-<section id="who-we-help-e5f6" class="py-16 md:py-24 bg-brand-deeper reveal-section">
+<section id="who-we-help" class="py-16 md:py-24 bg-brand-deeper reveal-section">
   <div class="max-w-6xl mx-auto px-5">
     <div class="text-center mb-12 md:mb-16">
-      <h2 class="font-orbitron font-bold text-2xl md:text-3xl lg:text-4xl text-white mb-4 glow-text-violet">Who We Help</h2>
+      <h2 class="font-orbitron font-bold text-3xl md:text-4xl text-white mb-4 glow-text-violet">Who We Help</h2>
       <p class="text-brand-gray max-w-2xl mx-auto">We work with homeowners across New Jersey facing all kinds of situations.</p>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-      <div class="glass-card p-6 rounded-xl">
-        <i data-lucide="home" class="w-8 h-8 text-brand-cyan mb-3"></i>
-        <h3 class="font-orbitron text-white font-semibold mb-2">Inherited Homes</h3>
-        <p class="text-brand-gray text-sm">Sell quickly without repairs or cleaning.</p>
-      </div>
-
-      <div class="glass-card p-6 rounded-xl">
-        <i data-lucide="alert-triangle" class="w-8 h-8 text-brand-cyan mb-3"></i>
-        <h3 class="font-orbitron text-white font-semibold mb-2">Foreclosure</h3>
-        <p class="text-brand-gray text-sm">Avoid foreclosure and get a fast cash solution.</p>
-      </div>
-
-      <div class="glass-card p-6 rounded-xl">
-        <i data-lucide="dollar-sign" class="w-8 h-8 text-brand-cyan mb-3"></i>
-        <h3 class="font-orbitron text-white font-semibold mb-2">Financial Hardship</h3>
-        <p class="text-brand-gray text-sm">Get relief with a quick, fair cash offer.</p>
-      </div>
-
-      <div class="glass-card p-6 rounded-xl">
-        <i data-lucide="wrench" class="w-8 h-8 text-brand-cyan mb-3"></i>
-        <h3 class="font-orbitron text-white font-semibold mb-2">Major Repairs Needed</h3>
-        <p class="text-brand-gray text-sm">Sell as‑is — no repairs required.</p>
-      </div>
-
-      <div class="glass-card p-6 rounded-xl">
-        <i data-lucide="users" class="w-8 h-8 text-brand-cyan mb-3"></i>
-        <h3 class="font-orbitron text-white font-semibold mb-2">Relocation</h3>
-        <p class="text-brand-gray text-sm">Move quickly with a fast closing timeline.</p>
-      </div>
-
-      <div class="glass-card p-6 rounded-xl">
-        <i data-lucide="building" class="w-8 h-8 text-brand-cyan mb-3"></i>
-        <h3 class="font-orbitron text-white font-semibold mb-2">Vacant Properties</h3>
-        <p class="text-brand-gray text-sm">Turn a vacant home into fast cash.</p>
-      </div>
+      <div class="glass-card p-6 rounded-xl"><h3 class="font-orbitron text-white font-semibold mb-2">Inherited Homes</h3><p class="text-brand-gray text-sm">Sell quickly without repairs or cleaning.</p></div>
+      <div class="glass-card p-6 rounded-xl"><h3 class="font-orbitron text-white font-semibold mb-2">Foreclosure</h3><p class="text-brand-gray text-sm">Avoid foreclosure and get a fast cash solution.</p></div>
+      <div class="glass-card p-6 rounded-xl"><h3 class="font-orbitron text-white font-semibold mb-2">Financial Hardship</h3><p class="text-brand-gray text-sm">Get relief with a quick, fair cash offer.</p></div>
+      <div class="glass-card p-6 rounded-xl"><h3 class="font-orbitron text-white font-semibold mb-2">Major Repairs Needed</h3><p class="text-brand-gray text-sm">Sell as‑is — no repairs required.</p></div>
+      <div class="glass-card p-6 rounded-xl"><h3 class="font-orbitron text-white font-semibold mb-2">Relocation</h3><p class="text-brand-gray text-sm">Move quickly with a fast closing timeline.</p></div>
+      <div class="glass-card p-6 rounded-xl"><h3 class="font-orbitron text-white font-semibold mb-2">Vacant Properties</h3><p class="text-brand-gray text-sm">Turn a vacant home into fast cash.</p></div>
     </div>
   </div>
 </section>
 
 <!-- HOW IT WORKS -->
-<section id="how-it-works-k9l0" class="py-20 bg-brand-dark reveal-section">
+<section id="how-it-works" class="py-20 bg-brand-dark reveal-section">
   <div class="max-w-6xl mx-auto px-5 text-center">
     <h2 class="font-orbitron text-white text-3xl mb-10 glow-text-violet">How It Works</h2>
 
     <div class="grid md:grid-cols-3 gap-10">
-      <div class="glass-card p-6 rounded-xl">
-        <i data-lucide="phone" class="w-10 h-10 text-brand-cyan mb-4"></i>
-        <h3 class="text-white font-semibold mb-2">Step 1: Contact Us</h3>
-        <p class="text-brand-gray text-sm">Tell us about your property — no obligations.</p>
-      </div>
-
-      <div class="glass-card p-6 rounded-xl">
-        <i data-lucide="file-text" class="w-10 h-10 text-brand-cyan mb-4"></i>
-        <h3 class="text-white font-semibold mb-2">Step 2: Get Your Offer</h3>
-        <p class="text-brand-gray text-sm">Receive a fair cash offer within 24 hours.</p>
-      </div>
-
-      <div class="glass-card p-6 rounded-xl">
-        <i data-lucide="check-circle" class="w-10 h-10 text-brand-cyan mb-4"></i>
-        <h3 class="text-white font-semibold mb-2">Step 3: Close Fast</h3>
-        <p class="text-brand-gray text-sm">Close in as little as 14–21 days.</p>
-      </div>
+      <div class="glass-card p-6 rounded-xl"><h3 class="text-white font-semibold mb-2">Step 1: Contact Us</h3><p class="text-brand-gray text-sm">Tell us about your property — no obligations.</p></div>
+      <div class="glass-card p-6 rounded-xl"><h3 class="text-white font-semibold mb-2">Step 2: Get Your Offer</h3><p class="text-brand-gray text-sm">Receive a fair cash offer within 24 hours.</p></div>
+      <div class="glass-card p-6 rounded-xl"><h3 class="text-white font-semibold mb-2">Step 3: Close Fast</h3><p class="text-brand-gray text-sm">Close in as little as 14–21 days.</p></div>
     </div>
   </div>
 </section>
@@ -229,17 +152,23 @@
     <p class="text-brand-gray mb-8">Fill out the quick form below and receive your offer within 24 hours.</p>
 
     <a href="speed-up-my-offer.html" class="gradient-cta text-white font-bold px-10 py-4 rounded-full glow-violet inline-flex items-center gap-2">
-      Speed Up My Offer <i data-lucide="zap" class="w-5 h-5"></i>
+      Speed Up My Offer
     </a>
   </div>
 </section>
-
-</main>
 
 <!-- FOOTER -->
 <footer class="py-10 bg-brand-dark border-t border-brand-violet/10 text-center text-brand-gray">
   <p>© 2026 FabGlow Real Estate — All Rights Reserved</p>
 </footer>
+
+<!-- REVEAL SCRIPT -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".reveal-section")
+    .forEach(sec => sec.classList.add("revealed"));
+});
+</script>
 
 </body>
 </html>
