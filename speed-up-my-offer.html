@@ -1,107 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Allow Google & Bing indexing -->
-  <meta name="robots" content="index, follow">
-  <meta name="googlebot" content="index, follow">
-  <meta name="bingbot" content="index, follow">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Speed Up My Offer — FabGlow Real Estate</title>
 
-  <!-- Block Amazon & Pinterest ONLY -->
-  <meta name="pinterestbot" content="noindex, nofollow">
-  <meta name="amazonbot" content="noindex, nofollow">
-
-  <!-- SEO -->
-  <title>Speed Up My Cash Offer — FabGlow Real Estate</title>
-  <meta name="description" content="Speed up your New Jersey cash offer by uploading photos, repair details, and your best call time.">
-
-  <!-- OpenGraph -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Speed Up My Cash Offer — FabGlow Real Estate">
-  <meta property="og:description" content="Speed up your NJ cash offer by uploading photos and repair details.">
-  <meta property="og:url" content="https://fabglowrealestate.com/speed-up-my-offer.html">
-  <meta property="og:image" content="https://fabglowrealestate.com/og-image.jpg">
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-
-  <!-- JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "FabGlow Real Estate",
-    "url": "https://fabglowrealestate.com",
-    "logo": "https://fabglowrealestate.com/logo.png",
-    "sameAs": [
-      "https://www.instagram.com/fabglowrealestate",
-      "https://www.facebook.com/fabglowrealestate"
-    ],
-    "description": "New Jersey real estate solutions offering fast, fair cash offers with no repairs, no agents, and no hassle."
-  }
-  </script>
-
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- GA4 + Google Ads (combined correctly) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TLEHXSVCX"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    /* GA4 */
-    gtag('config', 'G-TLEHXSVCX');
-
-    /* Google Ads */
-    gtag('config', 'AW-18156599607');
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'brand-dark': '#0a0a0f',
+            'brand-deeper': '#0f0f17',
+            'brand-card': 'rgba(255,255,255,0.04)',
+            'brand-gray': '#b3b3c2',
+            'brand-violet': '#7b2fff',
+            'brand-cyan': '#00e5ff'
+          },
+          fontFamily: {
+            orbitron: ['Orbitron', 'sans-serif'],
+            inter: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    };
   </script>
+
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #0a0a0f; color: #fff; }
+    .glass-card { background: rgba(255,255,255,.04); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,.06); }
+    .gradient-cta { background: linear-gradient(90deg,#7b2fff,#00e5ff); }
+    .reveal-section { opacity: 0; transform: translateY(40px); transition: .8s ease; }
+    .reveal-section.revealed { opacity: 1; transform: translateY(0); }
+  </style>
 </head>
 
-<body style="font-family: Arial, sans-serif; max-width: 700px; margin: auto; padding: 20px;">
+<body class="bg-brand-dark">
 
-    <h1>Speed Up Your Cash Offer</h1>
-    <p>Help us verify your property faster so our AI and specialist team can deliver your cash offer sooner. Upload photos, share repair details, and confirm the best time to reach you.</p>
+<header class="fixed top-0 left-0 w-full z-50 bg-brand-dark/80 backdrop-blur border-b border-brand-violet/10">
+  <div class="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <span class="w-3 h-3 rounded-full bg-brand-violet"></span>
+      <span class="font-orbitron font-bold text-lg text-white">FabGlow Real Estate</span>
+    </div>
+    <nav class="hidden md:flex items-center gap-8 text-sm">
+      <a href="/" class="text-brand-gray hover:text-brand-cyan transition">Home</a>
+      <a href="/#how-it-works" class="text-brand-gray hover:text-brand-cyan transition">How It Works</a>
+      <a href="/#get-offer" class="text-brand-gray hover:text-brand-cyan transition">Get Offer</a>
+    </nav>
+  </div>
+</header>
 
-    <h2>Upload Property Photos</h2>
-    <p>Clear photos help <strong>FabGlowMktDeal.ai</strong> confirm condition and generate a more accurate offer.</p>
+<main class="pt-48 md:pt-56">
 
-    <form method="POST" data-netlify="true" enctype="multipart/form-data">
-        <input type="hidden" name="form-name" value="speed-up-offer">
+<section class="max-w-4xl mx-auto px-5 text-center reveal-section">
+  <h1 class="font-orbitron text-4xl text-white mb-6">Speed Up My Offer</h1>
+  <p class="text-brand-gray mb-10">Provide a few quick details so we can prepare your cash offer even faster.</p>
 
-        <label>Front of the property:</label><br>
-        <input type="file" name="front"><br><br>
+  <div class="glass-card p-8 rounded-xl text-left">
+    <form class="space-y-6">
+      <div>
+        <label class="block text-brand-gray mb-2">Property Address</label>
+        <input type="text" class="w-full p-3 rounded bg-brand-deeper border border-brand-violet/20 text-white" />
+      </div>
 
-        <label>Back of the property:</label><br>
-        <input type="file" name="back"><br><br>
+      <div>
+        <label class="block text-brand-gray mb-2">Your Name</label>
+        <input type="text" class="w-full p-3 rounded bg-brand-deeper border border-brand-violet/20 text-white" />
+      </div>
 
-        <label>Kitchen:</label><br>
-        <input type="file" name="kitchen"><br><br>
+      <div>
+        <label class="block text-brand-gray mb-2">Phone Number</label>
+        <input type="text" class="w-full p-3 rounded bg-brand-deeper border border-brand-violet/20 text-white" />
+      </div>
 
-        <label>Bathrooms:</label><br>
-        <input type="file" name="bathrooms"><br><br>
-
-        <label>Any damage or repairs:</label><br>
-        <input type="file" name="repairs"><br><br>
-
-        <h2>Tell Us About Repairs or Updates</h2>
-        <textarea name="repair-details" rows="5" style="width:100%;" placeholder="Describe repairs, updates, or issues…"></textarea><br><br>
-
-        <h2>Confirm Your Best Call Time</h2>
-        <select name="call-time" style="width:100%; padding: 8px;">
-            <option>Morning (9 AM – 12 PM)</option>
-            <option>Afternoon (12 PM – 4 PM)</option>
-            <option>Evening (4 PM – 7 PM)</option>
-            <option>Text-only preferred</option>
-        </select><br><br>
-
-        <h2>Anything Else We Should Know?</h2>
-        <textarea name="notes" rows="4" style="width:100%;" placeholder="Add any notes about your situation…"></textarea><br><br>
-
-        <button type="submit" style="padding: 12px 20px; background: black; color: white; border: none; cursor: pointer;">
-            Submit & Speed Up My Offer
-        </button>
+      <button class="gradient-cta w-full py-4 rounded-full font-bold text-white glow-violet">
+        Submit & Speed Up My Offer
+      </button>
     </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="py-10 text-center text-brand-gray border-t border-brand-violet/10">
+  © 2026 FabGlow Real Estate — All Rights Reserved
+</footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".reveal-section").forEach(sec => sec.classList.add("revealed"));
+});
+</script>
 
 </body>
 </html>
