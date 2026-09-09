@@ -78,26 +78,16 @@
     .glow-violet { box-shadow: 0 0 18px rgba(123,47,255,.6); }
     .reveal-section { opacity: 0; transform: translateY(40px); transition: .8s ease; }
     .reveal-section.revealed { opacity: 1; transform: translateY(0); }
-    .particle { position: absolute; border-radius: 50%; animation: floatUp linear infinite; }
-    @keyframes floatUp {
-      0% { transform: translateY(0); opacity: 0; }
-      50% { opacity: 1; }
-      100% { transform: translateY(-120px); opacity: 0; }
-    }
   </style>
 </head>
 
-<!-- GA4 + Google Ads (combined correctly) -->
+<!-- GA4 + Google Ads -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-TLEHXSVCX"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
-  /* GA4 */
   gtag('config', 'G-TLEHXSVCX');
-
-  /* Google Ads */
   gtag('config', 'AW-18156599607');
 </script>
 
@@ -117,31 +107,13 @@
       <a href="#get-offer" class="text-brand-gray hover:text-brand-cyan transition">Get Offer</a>
       <a href="/fabglowmktdeal-ai" class="text-brand-gray hover:text-brand-cyan transition">FabGlowMktDeal.ai</a>
     </nav>
-
-    <button id="mobile-menu-btn-f6g7" class="md:hidden text-brand-gray">
-      <i data-lucide="menu" class="w-6 h-6"></i>
-    </button>
-  </div>
-
-  <div id="mobile-menu-h8i9" class="hidden flex-col bg-brand-dark/95 backdrop-blur border-t border-brand-violet/10 p-6">
-    <button id="mobile-menu-close-j0k1" class="text-right mb-4 text-brand-gray">
-      <i data-lucide="x" class="w-6 h-6"></i>
-    </button>
-
-    <a href="#hero-s3c4" class="mobile-nav-link block py-2 text-brand-gray hover:text-brand-cyan">Home</a>
-    <a href="#who-we-help-e5f6" class="mobile-nav-link block py-2 text-brand-gray hover:text-brand-cyan">About</a>
-    <a href="#how-it-works-k9l0" class="mobile-nav-link block py-2 text-brand-gray hover:text-brand-cyan">How It Works</a>
-    <a href="#get-offer" class="mobile-nav-link block py-2 text-brand-gray hover:text-brand-cyan">Get Offer</a>
-    <a href="/fabglowmktdeal-ai" class="mobile-nav-link block py-2 text-brand-gray hover:text-brand-cyan">FabGlowMktDeal.ai</a>
   </div>
 </header>
 
 <div class="h-20"></div>
 
 <!-- HERO -->
-<section id="hero-s3c4" class="relative py-24 md:py-40 bg-brand-deeper overflow-hidden reveal-section">
-  <div id="particles-l2m3" class="absolute inset-0 pointer-events-none"></div>
-
+<section id="hero-s3c4" class="relative py-24 md:py-40 bg-brand-deeper reveal-section">
   <div class="relative z-10 max-w-4xl mx-auto px-5 text-center">
     <h1 class="font-orbitron font-bold text-3xl md:text-5xl lg:text-6xl text-white mb-6 glow-text-violet">
       Sell Your NJ Home Fast — For a Fair Cash Offer
@@ -166,52 +138,104 @@
 <!-- STATS -->
 <section id="stats-bar-b8c9" class="py-12 bg-brand-dark reveal-section">
   <div class="max-w-6xl mx-auto px-5 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-
-    <div class="stat-item">
-      <div data-count="500" data-suffix="+" class="text-3xl font-bold text-white mb-1"></div>
-      <p class="text-brand-gray text-sm">Homes Evaluated</p>
-    </div>
-
-    <div class="stat-item">
-      <div data-count="14" data-suffix="-21" class="text-3xl font-bold text-white mb-1"></div>
-      <p class="text-brand-gray text-sm">Day Closings</p>
-    </div>
-
-    <div class="stat-item">
-      <div data-count="100" data-suffix="%" class="text-3xl font-bold text-white mb-1"></div>
-      <p class="text-brand-gray text-sm">No-Pressure Offers</p>
-    </div>
-
-    <div class="stat-item">
-      <div data-count="12" data-suffix="+" class="text-3xl font-bold text-white mb-1"></div>
-      <p class="text-brand-gray text-sm">NJ Counties Served</p>
-    </div>
-
+    <div><div class="text-3xl font-bold text-white">500+</div><p class="text-brand-gray text-sm">Homes Evaluated</p></div>
+    <div><div class="text-3xl font-bold text-white">14–21</div><p class="text-brand-gray text-sm">Day Closings</p></div>
+    <div><div class="text-3xl font-bold text-white">100%</div><p class="text-brand-gray text-sm">No‑Pressure Offers</p></div>
+    <div><div class="text-3xl font-bold text-white">12+</div><p class="text-brand-gray text-sm">NJ Counties Served</p></div>
   </div>
 </section>
 
 <!-- WHO WE HELP -->
 <section id="who-we-help-e5f6" class="py-16 md:py-24 bg-brand-deeper reveal-section">
   <div class="max-w-6xl mx-auto px-5">
-
     <div class="text-center mb-12 md:mb-16">
       <h2 class="font-orbitron font-bold text-2xl md:text-3xl lg:text-4xl text-white mb-4 glow-text-violet">Who We Help</h2>
       <p class="text-brand-gray max-w-2xl mx-auto">We work with homeowners across New Jersey facing all kinds of situations.</p>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
       <div class="glass-card p-6 rounded-xl">
         <i data-lucide="home" class="w-8 h-8 text-brand-cyan mb-3"></i>
         <h3 class="font-orbitron text-white font-semibold mb-2">Inherited Homes</h3>
         <p class="text-brand-gray text-sm">Sell quickly without repairs or cleaning.</p>
       </div>
 
-      <!-- Your remaining sections continue unchanged -->
+      <div class="glass-card p-6 rounded-xl">
+        <i data-lucide="alert-triangle" class="w-8 h-8 text-brand-cyan mb-3"></i>
+        <h3 class="font-orbitron text-white font-semibold mb-2">Foreclosure</h3>
+        <p class="text-brand-gray text-sm">Avoid foreclosure and get a fast cash solution.</p>
+      </div>
 
+      <div class="glass-card p-6 rounded-xl">
+        <i data-lucide="dollar-sign" class="w-8 h-8 text-brand-cyan mb-3"></i>
+        <h3 class="font-orbitron text-white font-semibold mb-2">Financial Hardship</h3>
+        <p class="text-brand-gray text-sm">Get relief with a quick, fair cash offer.</p>
+      </div>
+
+      <div class="glass-card p-6 rounded-xl">
+        <i data-lucide="wrench" class="w-8 h-8 text-brand-cyan mb-3"></i>
+        <h3 class="font-orbitron text-white font-semibold mb-2">Major Repairs Needed</h3>
+        <p class="text-brand-gray text-sm">Sell as‑is — no repairs required.</p>
+      </div>
+
+      <div class="glass-card p-6 rounded-xl">
+        <i data-lucide="users" class="w-8 h-8 text-brand-cyan mb-3"></i>
+        <h3 class="font-orbitron text-white font-semibold mb-2">Relocation</h3>
+        <p class="text-brand-gray text-sm">Move quickly with a fast closing timeline.</p>
+      </div>
+
+      <div class="glass-card p-6 rounded-xl">
+        <i data-lucide="building" class="w-8 h-8 text-brand-cyan mb-3"></i>
+        <h3 class="font-orbitron text-white font-semibold mb-2">Vacant Properties</h3>
+        <p class="text-brand-gray text-sm">Turn a vacant home into fast cash.</p>
+      </div>
     </div>
   </div>
 </section>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works-k9l0" class="py-20 bg-brand-dark reveal-section">
+  <div class="max-w-6xl mx-auto px-5 text-center">
+    <h2 class="font-orbitron text-white text-3xl mb-10 glow-text-violet">How It Works</h2>
+
+    <div class="grid md:grid-cols-3 gap-10">
+      <div class="glass-card p-6 rounded-xl">
+        <i data-lucide="phone" class="w-10 h-10 text-brand-cyan mb-4"></i>
+        <h3 class="text-white font-semibold mb-2">Step 1: Contact Us</h3>
+        <p class="text-brand-gray text-sm">Tell us about your property — no obligations.</p>
+      </div>
+
+      <div class="glass-card p-6 rounded-xl">
+        <i data-lucide="file-text" class="w-10 h-10 text-brand-cyan mb-4"></i>
+        <h3 class="text-white font-semibold mb-2">Step 2: Get Your Offer</h3>
+        <p class="text-brand-gray text-sm">Receive a fair cash offer within 24 hours.</p>
+      </div>
+
+      <div class="glass-card p-6 rounded-xl">
+        <i data-lucide="check-circle" class="w-10 h-10 text-brand-cyan mb-4"></i>
+        <h3 class="text-white font-semibold mb-2">Step 3: Close Fast</h3>
+        <p class="text-brand-gray text-sm">Close in as little as 14–21 days.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GET OFFER -->
+<section id="get-offer" class="py-20 bg-brand-deeper reveal-section">
+  <div class="max-w-4xl mx-auto px-5 text-center">
+    <h2 class="font-orbitron text-white text-3xl mb-6 glow-text-violet">Get Your Cash Offer</h2>
+    <p class="text-brand-gray mb-8">Fill out the quick form below and receive your offer within 24 hours.</p>
+
+    <a href="speed-up-my-offer.html" class="gradient-cta text-white font-bold px-10 py-4 rounded-full glow-violet inline-flex items-center gap-2">
+      Speed Up My Offer <i data-lucide="zap" class="w-5 h-5"></i>
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-10 bg-brand-dark border-t border-brand-violet/10 text-center text-brand-gray">
+  <p>© 2026 FabGlow Real Estate — All Rights Reserved</p>
+</footer>
 
 </body>
 </html>
