@@ -1,196 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Allow Google & Bing indexing -->
-  <meta name="robots" content="index, follow">
-  <meta name="googlebot" content="index, follow">
-  <meta name="bingbot" content="index, follow">
-
-  <!-- Block Amazon & Pinterest ONLY -->
-  <meta name="pinterestbot" content="noindex, nofollow">
-  <meta name="amazonbot" content="noindex, nofollow">
-
-  <!-- SEO -->
-  <title>FabGlowMktDeal.ai — AI Marketing Platform</title>
-  <meta name="description" content="FabGlowMktDeal.ai helps entrepreneurs automate content, build funnels, manage leads, and grow their brand using powerful AI tools.">
-
-  <!-- OpenGraph -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="FabGlowMktDeal.ai — AI Marketing Platform">
-  <meta property="og:description" content="Automate your marketing, generate content, and unlock powerful AI tools with FabGlowMktDeal.ai.">
-  <meta property="og:url" content="https://fabglowrealestate.com/fabglowmktdeal-ai.html">
-  <meta property="og:image" content="https://fabglowrealestate.com/og-image.jpg">
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image">
-
-  <!-- JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "FabGlow Real Estate",
-    "url": "https://fabglowrealestate.com",
-    "logo": "https://fabglowrealestate.com/logo.png",
-    "sameAs": [
-      "https://www.instagram.com/fabglowrealestate",
-      "https://www.facebook.com/fabglowrealestate"
-    ],
-    "description": "New Jersey real estate solutions offering fast, fair cash offers with no repairs, no agents, and no hassle."
-  }
-  </script>
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FabGlowMktDeal.ai — Real Estate Marketing Tools</title>
 
-  <!-- GA4 + Google Ads -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-TLEHXSVCX"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    /* GA4 */
-    gtag('config', 'G-TLEHXSVCX');
-
-    /* Google Ads */
-    gtag('config', 'AW-18156599607');
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'brand-dark': '#0a0a0f',
+            'brand-deeper': '#0f0f17',
+            'brand-card': 'rgba(255,255,255,0.04)',
+            'brand-gray': '#b3b3c2',
+            'brand-violet': '#7b2fff',
+            'brand-cyan': '#00e5ff'
+          },
+          fontFamily: {
+            orbitron: ['Orbitron', 'sans-serif'],
+            inter: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    };
   </script>
 
-  <!-- Tailwind -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Glow Theme Styles -->
   <style>
-    .glow-text {
-      text-shadow: 0 0 10px rgba(139, 92, 246, 0.8), 0 0 20px rgba(59, 130, 246, 0.6);
-    }
-    .glass {
-      background: rgba(255, 255, 255, 0.05);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    .glow-border {
-      border: 1px solid rgba(139, 92, 246, 0.4);
-      box-shadow: 0 0 15px rgba(139, 92, 246, 0.4);
-    }
-    .glow-btn {
-      background: linear-gradient(90deg, #7c3aed, #06b6d4);
-      box-shadow: 0 0 20px rgba(124, 58, 237, 0.6);
-    }
-    .glow-btn:hover {
-      box-shadow: 0 0 30px rgba(124, 58, 237, 0.9);
-      transform: translateY(-2px);
-    }
-    .reveal {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.7s ease;
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    body { font-family: 'Inter', sans-serif; background-color: #0a0a0f; color: #fff; }
+    .glass-card { background: rgba(255,255,255,.04); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,.06); }
+    .gradient-cta { background: linear-gradient(90deg,#7b2fff,#00e5ff); }
+    .reveal-section { opacity: 0; transform: translateY(40px); transition: .8s ease; }
+    .reveal-section.revealed { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 
-<body class="bg-gray-950 text-white relative">
+<body>
 
-  <!-- Grid Background -->
-  <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 pointer-events-none"></div>
-
-  <!-- Header -->
-  <header class="p-6 border-b border-white/10 relative z-10">
-    <nav class="flex justify-between items-center max-w-7xl mx-auto">
-      <a href="/" class="text-2xl font-bold glow-text">AI FabGlow</a>
-      <div class="flex gap-6">
-        <a href="/" class="hover:text-cyan-400 transition">Home</a>
-        <a href="/fabglowmktdeal-ai" class="text-cyan-400 font-semibold">FabGlowMktDeal.ai</a>
-      </div>
+<header class="fixed top-0 left-0 w-full z-50 bg-brand-dark/80 backdrop-blur border-b border-brand-violet/10">
+  <div class="max-w-6xl mx-auto px-5 py-4 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <span class="w-3 h-3 rounded-full bg-brand-violet"></span>
+      <span class="font-orbitron font-bold text-lg text-white">FabGlow Real Estate</span>
+    </div>
+    <nav class="hidden md:flex items-center gap-8 text-sm">
+      <a href="/" class="text-brand-gray hover:text-brand-cyan transition">Home</a>
+      <a href="/#who-we-help" class="text-brand-gray hover:text-brand-cyan transition">Who We Help</a>
+      <a href="/#how-it-works" class="text-brand-gray hover:text-brand-cyan transition">How It Works</a>
+      <a href="/#get-offer" class="text-brand-gray hover:text-brand-cyan transition">Get Offer</a>
     </nav>
-  </header>
+  </div>
+</header>
 
-  <!-- Main Section -->
-  <section class="max-w-7xl mx-auto py-20 px-6 relative z-10">
+<main class="pt-48 md:pt-56">
 
-    <h1 class="text-5xl font-extrabold mb-6 glow-text reveal">
-      FabGlowMktDeal.ai — AI Marketing Platform
-    </h1>
+<section class="max-w-5xl mx-auto px-5 text-center reveal-section">
+  <h1 class="font-orbitron text-4xl text-white mb-6">FabGlowMktDeal.ai</h1>
+  <p class="text-brand-gray max-w-2xl mx-auto mb-10">
+    AI-powered tools to help real estate investors, wholesalers, and agents streamline marketing, lead generation, and deal analysis.
+  </p>
 
-    <p class="text-xl text-gray-300 mb-12 max-w-3xl reveal">
-      FabGlowMktDeal.ai helps entrepreneurs, small business owners, and service providers automate their marketing,
-      grow their brand, and attract more customers — all from one powerful AI‑driven dashboard.
-    </p>
-
-    <!-- Pricing Buttons -->
-    <div class="flex flex-col md:flex-row gap-6 mb-20 reveal">
-
-      <div class="flex-1">
-        <a href="https://buy.stripe.com/4gM5kC8rfgs3gbDadAgw001"
-           class="px-8 py-4 rounded-xl text-lg font-semibold text-white glow-btn transition block text-center">
-          Premium Marketing Starter Package — One‑Time $3,500
-        </a>
-        <p class="text-gray-400 text-sm mt-2 text-center">
-          One‑time setup. No monthly fees. Includes your full custom marketing system.
-        </p>
-        <p class="text-cyan-300 text-sm mt-1 text-center font-semibold">
-          Pay in full or split into installments with Afterpay.
-        </p>
-      </div>
-
-      <div class="flex-1">
-        <a href="https://buy.stripe.com/9B6eVcdLz5Np8Jb85sgw00"
-           class="px-8 py-4 rounded-xl text-lg font-semibold text-white glow-btn transition block text-center">
-          FabGlowMktDeal.ai Automation Membership — $299.99/mo
-        </a>
-        <p class="text-gray-400 text-sm mt-2 text-center">
-          Full access to all FabGlowMktDeal.ai apps + automation tools.
-        </p>
-      </div>
-
+  <div class="grid md:grid-cols-3 gap-8">
+    <div class="glass-card p-6 rounded-xl">
+      <h3 class="font-orbitron text-white mb-2">AI Lead Analyzer</h3>
+      <p class="text-brand-gray text-sm">Instantly evaluate seller leads with automated scoring.</p>
     </div>
 
-    <!-- Afterpay Section -->
-    <section class="max-w-4xl mx-auto mt-10 mb-20 p-8 glass glow-border rounded-2xl reveal">
-      <h2 class="text-3xl font-extrabold glow-text mb-4 text-center">How Afterpay Works</h2>
+    <div class="glass-card p-6 rounded-xl">
+      <h3 class="font-orbitron text-white mb-2">Deal Breakdown</h3>
+      <p class="text-brand-gray text-sm">Get fast ARV, repair estimates, and offer ranges.</p>
+    </div>
 
-      <p class="text-gray-300 text-center mb-8">
-        Afterpay makes it easier to invest in your business by splitting your one‑time $3,500 payment into smaller installments — with no interest, no fees, and instant approval.
-      </p>
+    <div class="glass-card p-6 rounded-xl">
+      <h3 class="font-orbitron text-white mb-2">Marketing Automations</h3>
+      <p class="text-brand-gray text-sm">Generate SMS, email, and social content instantly.</p>
+    </div>
+  </div>
+</section>
 
-      <div class="grid md:grid-cols-4 gap-6">
-        <div class="text-center">
-          <div class="text-4xl mb-3">🛒</div>
-          <h3 class="font-semibold text-lg glow-text mb-2">1. Select Afterpay</h3>
-          <p class="text-gray-400 text-sm">Choose Afterpay at checkout.</p>
-        </div>
+</main>
 
-        <div class="text-center">
-          <div class="text-4xl mb-3">⚡</div>
-          <h3 class="font-semibold text-lg glow-text mb-2">2. Instant Approval</h3>
-          <p class="text-gray-400 text-sm">Approval happens in seconds.</p>
-        </div>
+<footer class="py-10 text-center text-brand-gray border-t border-brand-violet/10">
+  © 2026 FabGlow Real Estate — All Rights Reserved
+</footer>
 
-        <div class="text-center">
-          <div class="text-4xl mb-3">💳</div>
-          <h3 class="font-semibold text-lg glow-text mb-2">3. Pay Over Time</h3>
-          <p class="text-gray-400 text-sm">Split your payment into installments.</p>
-        </div>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".reveal-section").forEach(sec => sec.classList.add("revealed"));
+});
+</script>
 
-        <div class="text-center">
-          <div class="text-4xl mb-3">🎉</div>
-          <h3 class="font-semibold text-lg glow-text mb-2">4. Get Full Access</h3>
-          <p class="text-gray-400 text-sm">Receive your full marketing system immediately.</p>
-        </div>
-      </div>
-
-      <div class="text-center mt-8">
-        <a href="https://buy.stripe.com/4gM5kC8rfgs3gbDadAgw001"
-           class="px-8 py-4 rounded-xl text-lg font-semibold text-white glow-btn inline-block">
-          Pay in Full or With Afterpay
-        </a>
-      </div>
-    </section>
-
-    <!-- Features Grid -->
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+</body>
+</html>
