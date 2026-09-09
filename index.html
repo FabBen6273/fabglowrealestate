@@ -44,24 +44,19 @@
   </script>
 </head>
 
- <!-- GA4 tag -->
+<!-- GA4 + Google Ads (combined correctly) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-TLEHXSVCX"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
+
+  /* GA4 */
   gtag('config', 'G-TLEHXSVCX');
+
+  /* Google Ads */
+  gtag('config', 'AW-18156599607');
 </script>
-
-
-  <!-- Google Ads tag -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18156599607"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'AW-18156599607');
-  </script>
 
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -108,6 +103,7 @@ body { font-family: 'Inter', sans-serif; background-color: #0a0a0f; color: #fff;
 100% { transform: translateY(-120px); opacity: 0; }
 }
 </style>
+
 </head>
 
 <body class="bg-brand-dark">
